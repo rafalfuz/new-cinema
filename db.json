@@ -1,0 +1,38 @@
+{
+  "movie": [
+    {
+      "id": 1,
+      "title": "Jason Bourne",
+      "genre": "action",
+      "isPremiere": "true",
+      "duration": 90,
+      "longDescription": "Lorem long....",
+      "shortDesription": "Lorem short...",
+      "rating": 6.5,
+      "pegiCategory": "R",
+      "img": "https://fwcdn.pl/fpo/28/12/732812/7742307.6.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Jason Bourne2",
+      "genre": "action",
+      "isPremiere": "true",
+      "duration": 88,
+      "longDescription": "Lorem long....",
+      "shortDesription": "Lorem short...",
+      "rating": 6.5,
+      "pegiCategory": "R",
+      "img": "https://fwcdn.pl/fpo/28/12/732812/7742307.6.jpg"
+    }
+  ],
+  "room": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
