@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ListOfMoviesComponent } from './list-of-movies/list-of-movies.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     CalendarComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ListOfMoviesComponent
   ],
   imports: [
     BrowserModule,

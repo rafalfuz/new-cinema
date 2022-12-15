@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LoginFormComponent {
 
+  // form = this.builder.group({
+  //   email: this.builder.control('test@test.pl'),
+  //   password: this.builder.control('testtest'),
+  // });
+
 }
