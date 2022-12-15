@@ -1,4 +1,22 @@
 .top-bar{
     height: 80px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bar--title{
+    flex-basis: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.top-bar--login-panel{
+    
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    margin: 5px;
 }

@@ -1,0 +1,14 @@
+.btn-group{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0;
+}
+.btn-data-select{
+    display: inline-block;
+    width: 100px;
+    height: 25px;
+}
+button{
+    width: 100%;
+    height: 100%;
+}
