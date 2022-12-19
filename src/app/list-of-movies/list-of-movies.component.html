@@ -1,5 +1,8 @@
 <div class="listOfMoviesWrapper">
     <p>list-of-movies works!</p>
     <app-calendar></app-calendar>
+    <div *ngFor="let movie of movies">
+        <app-single-movie [movie]="movie"></app-single-movie>
+    </div>
 </div>
 

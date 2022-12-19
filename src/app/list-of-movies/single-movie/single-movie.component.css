@@ -1,0 +1,37 @@
+.movie-view-wrapper{
+    background-color: wheat;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.movie-image{
+    flex-basis: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-image-poster{
+    margin: 20px;
+}
+
+.movie-info{
+    flex-basis: 50%;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-rating{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 25%;
+    font-size: 28px;
+}
+
+.movie-info-description-show{
+    text-align: right;
+    cursor: pointer;
+}

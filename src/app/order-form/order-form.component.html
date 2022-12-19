@@ -1,0 +1,18 @@
+<h1>Title of movie, DD/MM/RRRR, godz: time</h1>
+<ul>
+    <li>Rzad D Miejsce 6 XX PLN</li>
+</ul>
+<p>Razem: XX PLN</p>
+<form [formGroup] = "orderTicketsForm">
+    <label><input formControlName = "name" placeholder="Imie*"></label>
+    <label><input formControlName = 'surname' placeholder="Nazwisko*"></label>
+    <label><input formControlName = 'phoneNumber' placeholder="Numer telefonu" type="tel"></label>
+    <label><input formControlName = 'email' type="email" placeholder="Adres e-mail*"></label>
+    <label><input formControlName = 'emailRepeat' type="email" placeholder="Powtórz adres e-mail*"></label>
+    <label class="switch">
+        <input formControlName='newsletterToggler' type="checkbox">
+        <span class="slider round"></span>
+    </label>
+    <label><input formControlName='promo' placeholder="Kod zniżkowy"></label>
+    <button type="button">Zamawiam!</button>
+</form>
