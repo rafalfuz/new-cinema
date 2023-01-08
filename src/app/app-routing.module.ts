@@ -17,6 +17,15 @@ const routes: Routes = [
   {
     path: 'form',
     component: OrderFormComponent
+  },
+  {
+    path: 'today',
+    component: OrderFormComponent
+  },
+  {
+    path: ':day',
+      component: ListOfMoviesComponent
+    
   }
 ];
 

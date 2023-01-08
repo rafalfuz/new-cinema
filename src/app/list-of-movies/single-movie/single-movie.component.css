@@ -1,8 +1,9 @@
-.movie-view-wrapper{
+:host{
     background-color: wheat;
     width: 90%;
     margin: 0 auto;
     display: flex;
+    border: 1px solid red;
 }
 
 .movie-image{
@@ -10,10 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid green;
 }
 
 .movie-image-poster{
-    margin: 20px;
+    padding: 25px;
+    border: 1px solid orange;
 }
 
 .movie-info{
@@ -21,6 +24,7 @@
     text-align: left;
     align-items: center;
     justify-content: center;
+    border: 1px solid violet;
 }
 
 .movie-rating{
@@ -29,6 +33,7 @@
     justify-content: center;
     flex-basis: 25%;
     font-size: 28px;
+    border: 1px solid tomato;
 }
 
 .movie-info-description-show{

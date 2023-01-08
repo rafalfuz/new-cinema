@@ -25,8 +25,31 @@ export interface Movies{
     premiere: boolean,
     runTime: number,
     pg: number,
-    genre: string
+    genre: string,
+    day: string
 }
 
+export interface Reperoire{
+    id: string,
+    title: string,
+    image: string,
+    descriptionShort: string,
+    rating: number,
+    votesNumber: string,
+    premiere: boolean,
+    runTime: number,
+    pg: number,
+    genre: string,
+    day: string,
+    hours:{time: string, cinemaRoomId: string, showingId: string }
+}
+
+export interface Cinemarooms{
+    id: string,
+    seats: {position: {row: string, column: string},
+            isBusy: boolean,
+            status: boolean
+        }
+}
 
 

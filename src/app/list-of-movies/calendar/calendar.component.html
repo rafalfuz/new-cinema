@@ -1,4 +1,4 @@
-<div class="btn-group">
+<!-- <div class="btn-group">
     <a href='today' class="btn btn-data-select active"><button>{{today | date:"dd/MM"}}</button></a>
     <a href='tomorrow' class="btn btn-data-select"><button >{{tomorrow | date:"dd/MM"}}</button></a>
     <a href='todayAddTwoDays' class="btn btn-data-select"><button>{{todayAddTwoDays | date:"dd/MM"}}</button></a>
@@ -7,3 +7,21 @@
     <a href="todayAddFiveDays" class="btn btn-data-select"><button>{{todayAddFiveDays | date:"dd/MM"}}</button></a>
     <a href="todayAddSixDays" class="btn btn-data-select"><button>{{todayAddSixDays | date:"dd/MM"}}</button></a>
 </div>
+
+<mat-button-toggle-group name="chooseDay" aria-label="Choose a day">
+    <mat-button-toggle routerLink="/today" value="today">{{today | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerLink="/tomorrow" value="tomorrow">{{tomorrow | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerlink="/todayAddTwoDays" value="todayAddTwoDays">{{todayAddTwoDays | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerLink="/todayAddThreeDays" value="todayAddThreeDays">{{todayAddThreeDays | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerLink="/todayAddFourDays" value="todayAddFourDays">{{todayAddFourDays | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerLink="todayAddFiveDays" value="todayAddFiveDays">{{todayAddFiveDays | date:"dd/MM"}}</mat-button-toggle>
+    <mat-button-toggle routerLink="todayAddSixDays" value="todayAddSixDays">{{todayAddSixDays | date:"dd/MM"}}</mat-button-toggle>
+</mat-button-toggle-group> -->
+
+<mat-button-toggle-group name="chooseDay" aria-label="Choose a day">
+    <mat-button-toggle *ngFor='let day of week' [routerLink]="['/', day]" value=day>{{day}}</mat-button-toggle>
+</mat-button-toggle-group>
+
+<!-- <div name="chooseDay" aria-label="Choose a day">
+    <button *ngFor='let day of week' [routerLink]="['/', day]" value=day>{{day}}</button>
+</div> -->

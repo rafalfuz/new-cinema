@@ -1,7 +1,7 @@
 <div class="listOfMoviesWrapper">
     <p>list-of-movies works!</p>
     <app-calendar></app-calendar>
-    <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of movies | async">
         <app-single-movie [movie]="movie"></app-single-movie>
     </div>
 </div>

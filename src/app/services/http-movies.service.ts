@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Movies } from 'models';
-import { map, Observable, tap } from 'rxjs';
+import { Movies, Reperoire } from 'models';
+import { filter, map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,24 @@ export class HttpMoviesService {
    return this.http.get<Movies[]>(this.url + '/movies')
   }
 
-  // getMovies():Observable<Movies[]>{
-  //   return this.http.get<HttpResponse<Movies[]>>(this.url + '/movies', {observe: 'response'}).
-  //   pipe(map(movies => movies.body))
-  //  }
+  // getRepertoire(day: string):Observable<Reperoire>{
+  //  return this.http.get<Observable<Reperoire>>(this.url + '/reperoire')
+  // }
+
+  getMoviesByDay(day: string): Observable<Movies[]>{
+    return this.getMovies().pipe(
+      map(movies => movies.filter(movie => movie.day === day))
+    )
+  }
+  
+  getDate():Observable<string[]>{
+    return this.http.get<string[]>(this.url + '/week')
+  }
+
+  // getRepertoireByDay(day:string):Observable<Reperoire>{
+  //   return this.getRepertoire().pipe(
+  //     filter(repertoires => repertoires.day === day)
+  //   )
+  // }
 
 }

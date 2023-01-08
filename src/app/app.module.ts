@@ -11,6 +11,8 @@ import { SingleMovieComponent } from './list-of-movies/single-movie/single-movie
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListOfMoviesComponent,
     SingleMovieComponent,
     TruncatePipe,
-    OrderFormComponent
+    OrderFormComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatButtonToggleModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
