@@ -21,10 +21,12 @@ export class HttpMoviesService {
    return this.http.get<Reperoire[]>(this.url + '/reperoire')
   }
 
-  getMoviesByDay(day: string): Observable<Movies[]>{
+  getMoviesByDay(day: string | any): Observable<Reperoire[]>{
+    
     return this.getRepertoire().pipe(
       map(movies => movies.filter(movie => movie.day === day))
     )
+
   }
   
   getDate():Observable<string[]>{

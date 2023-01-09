@@ -13,6 +13,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     SingleMovieComponent,
     TruncatePipe,
     OrderFormComponent,
+    PageNotFoundComponent,
     
   ],
   imports: [

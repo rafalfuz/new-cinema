@@ -77,6 +77,26 @@
     },
     {
       "movie": {
+        "id": "movie-avatar-way-of-water-123",
+        "title": "Avatar: Istota Woooody",
+        "image": "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg",
+        "descriptionShort": "Jake Sully lives with his newfound family formed on the planet of Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their planet.",
+        "rating": 8,
+        "votesNumber": 432,
+        "premiere": true,
+        "runTime": 192,
+        "pg": 13,
+        "genre": "Sci-Fi"
+      },
+      "day": "12-12-2022",
+      "hours": [
+        { "time": "15:00", "cinemaRoomId": "room-a", "showingId": "06-15-a" },
+        { "time": "17:00", "cinemaRoomId": "room-a", "showingId": "06-17-a" },
+        { "time": "20:00", "cinemaRoomId": "room-b", "showingId": "06-20-b" }
+      ]
+    },
+    {
+      "movie": {
         "id": "movie-darkKnight-123",
         "title": "The Dark Knight",
         "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",

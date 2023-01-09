@@ -4,13 +4,15 @@ import { CalendarComponent } from './list-of-movies/calendar/calendar.component'
 import { ListOfMoviesComponent } from './list-of-movies/list-of-movies.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ListOfMoviesComponent
-  },{
+    // path: '', redirectTo: 'day', pathMatch:'full'},
+    path: "", component: ListOfMoviesComponent
+  },
+  {
     path: 'login',
     component: LoginFormComponent
   },
@@ -23,9 +25,12 @@ const routes: Routes = [
     component: OrderFormComponent
   },
   {
-    path: ':day',
-      component: ListOfMoviesComponent
-    
+    path: 'repertoire/:day',
+    component: ListOfMoviesComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
