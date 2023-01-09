@@ -11,7 +11,7 @@ import { HttpMoviesService } from '../services/http-movies.service';
 })
 export class ListOfMoviesComponent {
   // movies: Movies[] = []
-  movies: Observable<Movies[]>
+  // movies: Observable<Movies[]>
   constructor(private http: HttpMoviesService, private route: ActivatedRoute){}
 
   ngOnInit(){
@@ -21,7 +21,9 @@ export class ListOfMoviesComponent {
     //   }
     // })
     const day = this.route.snapshot.paramMap.get("day")
-    this.movies = this.http.getMoviesByDay(day)
+    this.http.getMoviesByDay(day)
+    console.log(day)
+    // this.movies = this.http.getMoviesByDay(day)
   }
 
   // getMoviesByDate(day:string){
