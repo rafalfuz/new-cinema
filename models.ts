@@ -6,7 +6,7 @@ export interface User{
 
 export interface Reportaire{
     movieId: string,
-    hours: string,
+    hours: string[],
     day: string
 }
 
@@ -29,20 +29,52 @@ export interface Movies{
     day: string
 }
 
-export interface Reperoire{
-    id: string,
-    title: string,
-    image: string,
-    descriptionShort: string,
-    rating: number,
-    votesNumber: string,
-    premiere: boolean,
-    runTime: number,
-    pg: number,
-    genre: string,
-    day: string,
-    hours:{time: string, cinemaRoomId: string, showingId: string }
+export interface Hour {
+    time: string;
+    cinemaRoomId: string;
+    showingId: string;
 }
+
+export interface Movie {
+    id: string;
+    title: string;
+    image: string;
+    descriptionShort: string;
+    rating: number;
+    votesNumber: number;
+    premiere: boolean;
+    runTime: number;
+    pg: number;
+    genre: string;
+}
+
+export interface Reperoire{
+    movie: Movie,
+    day: string,
+    hours: Hour[]
+}
+
+export interface Position {
+    row: string;
+    column: string;
+}
+
+export interface TakenSeat {
+    position: Position;
+    isBusy: boolean;
+}
+
+export interface Showing {
+    id: string;
+    movieTitle: string;
+    cinemaRoomId: string;
+    takenSeats: TakenSeat[];
+}
+
+// export interface Cinemarooms {
+//     id: string;
+//     seats: any[][];
+// }
 
 export interface Cinemarooms{
     id: string,
@@ -51,5 +83,15 @@ export interface Cinemarooms{
             status: boolean
         }
 }
+
+// export interface RootObject {
+//     user: User;
+//     repertoire: Repertoire;
+//     ticketInfo: TicketInfo[];
+//     movies: Movie[];
+//     reperoire: Reperoire[];
+//     showings: Showing[];
+//     cinemarooms: Cinemarooms;
+// }
 
 

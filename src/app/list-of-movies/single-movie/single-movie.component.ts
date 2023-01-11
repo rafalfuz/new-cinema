@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Movies } from 'models';
+import { Movies, Reperoire } from 'models';
 import { TruncatePipe } from '../../pipes/truncate.pipe'
 
 @Component({
@@ -8,7 +8,8 @@ import { TruncatePipe } from '../../pipes/truncate.pipe'
   styleUrls: ['./single-movie.component.css']
 })
 export class SingleMovieComponent {
-  @Input() movie!: Movies
+  // @Input() movie!: Movies
+  @Input() reperoire!: Reperoire
 
   isFullyBlown = false
   
