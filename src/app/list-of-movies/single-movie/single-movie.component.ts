@@ -8,8 +8,8 @@ import { TruncatePipe } from '../../pipes/truncate.pipe'
   styleUrls: ['./single-movie.component.css']
 })
 export class SingleMovieComponent {
-  // @Input() movie!: Movies
-  @Input() reperoire!: Reperoire
+  @Input() movie!: Reperoire
+  // @Input() reperoire!: Reperoire
 
   isFullyBlown = false
   

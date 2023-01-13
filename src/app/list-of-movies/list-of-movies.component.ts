@@ -11,19 +11,19 @@ import { HttpMoviesService } from '../services/http-movies.service';
 })
 export class ListOfMoviesComponent implements OnInit {
   // movies: Movies[] = []
-  //movies!: Observable<Reperoire[]>;
-  reperoire!: Observable<Reperoire[]>
+  movies!: Observable<Reperoire[]>;
+  // reperoire: Observable<Reperoire[]> | undefined
 
-  constructor(private http: HttpMoviesService, private route: ActivatedRoute){}
+  constructor(private http: HttpMoviesService, private route: ActivatedRoute) { }
 
-  ngOnInit(){
-    
-    
-  //   this.http.getMovies().subscribe({
-  //     next: (response)=>{
-  //       this.movies = response
-  //     }
-  //   })
+  ngOnInit() {
+
+
+    //   this.http.getMovies().subscribe({
+    //     next: (response)=>{
+    //       this.movies = response
+    //     }
+    //   })
 
 
     // const day = this.route.snapshot.paramMap.get("day")
@@ -31,24 +31,31 @@ export class ListOfMoviesComponent implements OnInit {
     // console.log(day)
     // this.movies = this.http.getMoviesByDay(day)
     // console.log(this.movies)
-    
-    
-    // Ten działa cos
-    // this.movies = this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap)=>
-    //   this.http.getMoviesByDay(params.get('day')).pipe(tap(console.log)))
-    // )
-    
+
+
+    // Działa?
+    this.movies = this.route.paramMap.pipe(
+
+      switchMap((params) =>
+        this.http.getMoviesByDay(params.get('day'))),
+      tap((x) => {
+        console.log(x)
+      })
+
+    )
+    // console.log(this.movies)
+
+
 
     // this.movies = this.http.getMovies().
-    this.reperoire = this.http.getRepertoire()
-          }
     // this.reperoire = this.http.getRepertoire()
-    // this.reperoire.pipe().subscribe(
-    //    (data)=>{
-    //     console.log('data')
-    //    }
-    // )
+  }
+  // this.reperoire = this.http.getRepertoire()
+  // this.reperoire.pipe().subscribe(
+  //    (data)=>{
+  //     console.log('data')
+  //    }
+  // )
 
 
   // fn(){

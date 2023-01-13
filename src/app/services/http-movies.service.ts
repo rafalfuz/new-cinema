@@ -21,11 +21,11 @@ export class HttpMoviesService {
    return this.http.get<Reperoire[]>(this.url + '/reperoire')
   }
 
-  getMoviesByDay(day: string | any){  //Observable<Reperoire[]
+  getMoviesByDay(day: string | any):Observable<Reperoire[]>{
     
     const result =  this.getRepertoire().pipe(
       map(movies => movies.filter(movie => movie.day === day)))
-      // ).pipe(tap(console.log))
+     // .pipe(tap(console.log))
     
       
       return result;

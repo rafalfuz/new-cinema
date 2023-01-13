@@ -1,9 +1,10 @@
 :host{
-    background-color: wheat;
+    background-color: #6B5B95;
     width: 90%;
     margin: 0 auto;
     display: flex;
     border: 1px solid red;
+    margin: 5px;
 }
 
 .movie-image{

@@ -1,10 +1,10 @@
 <div class="listOfMoviesWrapper">
     <p>list-of-movies works!</p>
     <app-calendar></app-calendar>
-   <div *ngFor="let movie of reperoire | async"></div>
+   <!-- <div *ngFor="let movie of reperoire | async"></div> -->
        <!--   <app-single-movie [movie]="movie" *ngFor="let movie of movies | async"></app-single-movie> -->
 
-        <app-single-movie *ngFor="let movie of reperoire | async">
-            <h3>{{movie.day}}</h3>
+        <app-single-movie *ngFor="let movie of movies | async" [movie]="movie">
+            
         </app-single-movie>
 </div>
