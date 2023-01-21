@@ -18,8 +18,13 @@
     <mat-button-toggle routerLink="todayAddSixDays" value="todayAddSixDays">{{todayAddSixDays | date:"dd/MM"}}</mat-button-toggle>
 </mat-button-toggle-group> -->
 
-<mat-button-toggle-group name="chooseDay" aria-label="Choose a day">
-    <mat-button-toggle *ngFor='let day of week' [routerLink]="['/repertoire/', day]" value=day>{{day}}</mat-button-toggle>
+<mat-button-toggle-group name="dayOfWeek" aria-label="Font Style">
+  <mat-button-toggle
+    *ngFor="let day of week"
+    [routerLink]="['/repertoire/', day]"
+    value="{{ day }}"
+    >{{ day }}</mat-button-toggle
+  >
 </mat-button-toggle-group>
 
 <!-- <div name="chooseDay" aria-label="Choose a day">

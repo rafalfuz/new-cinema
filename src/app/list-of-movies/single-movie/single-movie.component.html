@@ -1,26 +1,48 @@
-    <div class="movie-wrapper" >
-        <p>single movie works</p>
-    <div class="movie-image">
-        <div class="movie-image-poster">
-            <p>{{movie.movie.title}}</p>
-            <!-- <img src={{movie.image}} alt=""> -->
-        </div>
+<div class="movie-wrapper">
+  <div class="movie-image-wrapper">
+    <div class="movie-image-poster">
+      <img
+        class="movie-image-poster-img"
+        src="{{ movie.movie.image }}"
+        alt=""
+      />
+      <p *ngIf="movie.movie.premiere" class="premiereInfo">Premiera</p>
     </div>
-    <div class="movie-info">
-
-        <!-- <h1>{{movie.descriptionShort}}</h1> -->
-        <!-- <h1 class="movie-info-title">{{movie.title}}</h1>
-        <p class="movie-info-about">{{movie.genre}} | {{movie.runTime}} | {{movie.pg}}</p>
-        <p class="movie-info-description">
-            {{isFullyBlown ? movie.descriptionShort : movie.descriptionShort | truncate:120}} 
-        </p> -->
-        <p class="movie-info-description-show" (click)="handleVisibiltyDescription()">{{isFullyBlown ? 'Ukryj' : 'Więcej'}}</p>
-        <div class="btn-group">
-            <!-- <a href="#!" class="btn btn-data-select" *ngFor="let hour of movie.seassionHours"><button>{{hour}}</button></a> -->
-        </div>
-    </div>
-    <div class="movie-rating">
-        <!-- <p class="rate">{{movie.rating}} / 10</p> -->
-    </div>
-    </div>
-
+  </div>
+  <div class="movie-info">
+    <h1 class="movie-info-title">{{ movie.movie.title }}</h1>
+    <p class="movie-info-about">
+      {{ movie.movie.genre }} | {{ movie.movie.runTime }} minut |
+      {{ movie.movie.pg }}
+    </p>
+    <p class="movie-info-description">
+      {{
+        isFullyBlown
+          ? movie.movie.descriptionShort
+          : (movie.movie.descriptionShort | truncate : 120)
+      }}
+    </p>
+    <p
+      class="movie-info-description-show"
+      (click)="handleVisibiltyDescription()"
+    >
+      {{ isFullyBlown ? "Ukryj" : "Więcej" }}
+    </p>
+    <mat-button-toggle-group
+      name="hoursOfSeans"
+      aria-label="SeansHours"
+      class="hoursOfSeans"
+    >
+      <mat-button-toggle
+        class="hourOfSeans"
+        *ngFor="let hour of movie.hours"
+        [routerLink]="['/repertoire/day', hour]"
+        value="{{ hour.time }}"
+        >{{ hour.time }}</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+  </div>
+  <div class="movie-rating">
+    <p class="rate">{{ movie.movie.rating }} / 10</p>
+  </div>
+</div>

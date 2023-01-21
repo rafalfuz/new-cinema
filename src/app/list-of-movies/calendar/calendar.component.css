@@ -1,16 +1,11 @@
-.btn-group{
-    margin: 0 auto;
-    text-align: center;
-    padding: 10px 0;
+mat-button-toggle-group {
+  margin: 1.2rem;
+  border: none;
 }
-.btn-data-select{
-    display: inline-block;
-    width: 100px;
-    height: 25px;
-    border-radius: 15%;
+mat-button-toggle {
+  font-size: 1.4rem;
 }
-button{
-    width: 100%;
-    height: 100%;
+.mat-button-toggle-checked {
+  background-color: #354760;
+  color: white;
 }
-

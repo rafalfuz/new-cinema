@@ -10,32 +10,33 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 const routes: Routes = [
   {
     // path: '', redirectTo: 'day', pathMatch:'full'},
-    path: "", component: ListOfMoviesComponent
+    path: '',
+    component: ListOfMoviesComponent,
   },
   {
     path: 'login',
-    component: LoginFormComponent
+    component: LoginFormComponent,
   },
   {
     path: 'form',
-    component: OrderFormComponent
+    component: OrderFormComponent,
   },
   {
     path: 'today',
-    component: OrderFormComponent
+    component: OrderFormComponent,
   },
   {
     path: 'repertoire/:day',
-    component: ListOfMoviesComponent
+    component: ListOfMoviesComponent,
   },
   {
     path: '**',
-    component: PageNotFoundComponent
-  }
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

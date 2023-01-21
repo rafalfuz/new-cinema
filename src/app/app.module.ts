@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -12,8 +12,11 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { OrderFormComponent } from './order-form/order-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FootbarComponent } from './footbar/footbar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TruncatePipe,
     OrderFormComponent,
     PageNotFoundComponent,
-    
+    FootbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

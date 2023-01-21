@@ -1,43 +1,100 @@
-:host{
-    background-color: #6B5B95;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    border: 1px solid red;
-    margin: 5px;
+.movie-wrapper {
+  width: 90%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
-.movie-image{
-    flex-basis: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid green;
+.movie-image-wrapper {
+  flex-basis: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.movie-image-poster{
-    padding: 25px;
-    border: 1px solid orange;
+.movie-image-poster {
+  position: absolute;
+  -webkit-animation: shadowPoster 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: shadowPoster 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.movie-image-poster-img {
+  width: clamp(95%, 97.5%, 99%);
 }
 
-.movie-info{
-    flex-basis: 50%;
-    text-align: left;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid violet;
+@-webkit-keyframes shadowPoster {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+    transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
 }
 
-.movie-rating{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 25%;
-    font-size: 28px;
-    border: 1px solid tomato;
+@keyframes shadowPoster {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(50px);
+    transform: translateZ(50px);
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
 }
 
-.movie-info-description-show{
-    text-align: right;
-    cursor: pointer;
+.movie-info {
+  flex-basis: 50%;
+  padding: 5%;
+  font-size: 1.6rem;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-info-about {
+  font-size: 1.6rem;
+  margin: 1rem auto;
+}
+
+.movie-info-description {
+  line-height: 2;
+}
+
+.movie-info-description-show {
+  margin: 20px;
+  text-align: right;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 25%;
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+.hoursOfSeans {
+  width: 75%;
+}
+.hourOfSeans {
+  width: 100%;
+}
+.premiereInfo {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  color: red;
+  letter-spacing: 2px;
 }
