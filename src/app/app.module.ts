@@ -10,13 +10,19 @@ import { ListOfMoviesComponent } from './list-of-movies/list-of-movies.component
 import { SingleMovieComponent } from './list-of-movies/single-movie/single-movie.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { OrderFormComponent } from './order-form/order-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  NonNullableFormBuilder,
+  Validators,
+} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FootbarComponent } from './footbar/footbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -40,6 +46,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonToggleModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
