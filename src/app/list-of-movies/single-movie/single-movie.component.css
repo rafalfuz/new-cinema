@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.9);
+  transform: scale(0.7);
 }
 
 .movie-image-poster {
@@ -20,7 +20,7 @@
   animation: shadowPoster 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .movie-image-poster-img {
-  width: clamp(95%, 97.5%, 99%);
+  width: 100%;
 }
 
 @-webkit-keyframes shadowPoster {
@@ -80,17 +80,31 @@
 
 .movie-rating {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-basis: 25%;
   font-size: 3.6rem;
   font-weight: bold;
 }
+
+.rate-btns {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25%;
+}
+
 .hoursOfSeans {
   width: 75%;
 }
+
 .hourOfSeans {
   width: 100%;
+}
+.rate-btn {
+  margin: 5px 0;
+  background-color: #fff;
+  padding: 5px 25px;
 }
 .premiereInfo {
   position: absolute;

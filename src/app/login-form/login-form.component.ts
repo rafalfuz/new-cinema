@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'models';
+import { AuthService, LoginCredentials } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
+  private authService = inject(AuthService);
   private builder = inject(NonNullableFormBuilder);
   private router = inject(Router);
   form = this.createForm();
@@ -42,10 +45,36 @@ export class LoginFormComponent {
     return this.emailCtrl.hasError('email') ? 'Nieprawidłowy adres email' : '';
   }
 
+  // login() {
+  //   this.form.markAllAsTouched();
+  //   if (this.form.valid) {
+  //     this.authService.login(this.form.value as LoginCredentials);
+  //     // this.router.navigate(['/']);
+  //   }
+  // }
+
+  // login() {
+  //   this.form.markAllAsTouched();
+  //   if (this.form.valid) {
+  //     this.authService
+  //       .loginSimpleWay(this.form.value as LoginCredentials)
+  //       .subscribe(
+  //         (suc) => {
+  //           console.log(suc);
+  //         },
+  //         (err) => {
+  //           console.log(err);
+  //         }
+  //       );
+  //   }
+  // }
+
   login() {
-    this.form.markAllAsTouched();
-    if (this.form.valid) {
-      this.router.navigate(['']);
-    }
+    this.authService
+      .login(this.form.value.email!, this.form.value.password!)
+      .subscribe((data) => {
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/']);
+      });
   }
 }

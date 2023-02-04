@@ -1,20 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Movies, Reperoire } from 'models';
-import { TruncatePipe } from '../../pipes/truncate.pipe'
+import { AuthService } from 'src/app/auth/auth.service';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-single-movie',
   templateUrl: './single-movie.component.html',
-  styleUrls: ['./single-movie.component.css']
+  styleUrls: ['./single-movie.component.css'],
 })
 export class SingleMovieComponent {
-  @Input() movie!: Reperoire
-  // @Input() reperoire!: Reperoire
+  auth = inject(AuthService).auth$;
+  visitorType: string = '';
+  isFullyBlown = false;
 
-  isFullyBlown = false
-  
-  handleVisibiltyDescription(){
-    this.isFullyBlown = !this.isFullyBlown
-  
-   }
+  @Input() movie!: Reperoire;
+
+  handleVisibiltyDescription() {
+    this.isFullyBlown = !this.isFullyBlown;
+  }
+
+  ngOnInit() {
+    // this.auth.auth$.subscribe((data) => {
+    //   this.visitorType = data.auth;
+    // });
+  }
 }

@@ -1,74 +1,77 @@
-export interface User{
-    id: number,
-    name: string,
-    role: string
+type AuthType = 'none' | 'admin' | 'customer';
+
+export interface User {
+  id: number;
+  name: string;
+  password: string;
+  authType: AuthType;
 }
 
-export interface Reportaire{
-    movieId: string,
-    hours: string[],
-    day: string
+export interface Reportaire {
+  movieId: string;
+  hours: string[];
+  day: string;
 }
 
-export interface TicketInfo{
-    type: string,
-    price: number
+export interface TicketInfo {
+  type: string;
+  price: number;
 }
 
-export interface Movies{
-    id: string,
-    title: string,
-    image: string,
-    descriptionShort: string,
-    rating: number,
-    votesNumber: string,
-    premiere: boolean,
-    runTime: number,
-    pg: number,
-    genre: string,
-    day: string
+export interface Movies {
+  id: string;
+  title: string;
+  image: string;
+  descriptionShort: string;
+  rating: number;
+  votesNumber: string;
+  premiere: boolean;
+  runTime: number;
+  pg: number;
+  genre: string;
+  day: string;
 }
 
 export interface Hour {
-    time: string;
-    cinemaRoomId: string;
-    showingId: string;
+  time: string;
+  cinemaRoomId: string;
+  showingId: string;
 }
 
 export interface Movie {
-    id: string;
-    title: string;
-    image: string;
-    descriptionShort: string;
-    rating: number;
-    votesNumber: number;
-    premiere: boolean;
-    runTime: number;
-    pg: number;
-    genre: string;
+  id: string;
+  title: string;
+  image: string;
+  descriptionShort: string;
+  rating: number;
+  votesNumber: number;
+  premiere: boolean;
+  runTime: number;
+  pg: number;
+  genre: string;
 }
 
-export interface Reperoire{
-    movie: Movie,
-    day: string,
-    hours: Hour[]
+export interface Reperoire {
+  movie: Movie;
+  day: string;
+  hours: Hour[];
 }
 
 export interface Position {
-    row: string;
-    column: string;
+  row: string;
+  column: string;
 }
 
 export interface TakenSeat {
-    position: Position;
-    isBusy: boolean;
+  position: Position;
+  isBusy: boolean;
 }
 
 export interface Showing {
-    id: string;
-    movieTitle: string;
-    cinemaRoomId: string;
-    takenSeats: TakenSeat[];
+  id: string;
+  movieTitle: string;
+  cinemaRoomId: string;
+  takenSeats: TakenSeat[];
 }
 
 // export interface Cinemarooms {
@@ -76,12 +79,13 @@ export interface Showing {
 //     seats: any[][];
 // }
 
-export interface Cinemarooms{
-    id: string,
-    seats: {position: {row: string, column: string},
-            isBusy: boolean,
-            status: boolean
-        }
+export interface Cinemarooms {
+  id: string;
+  seats: {
+    position: { row: string; column: string };
+    isBusy: boolean;
+    status: boolean;
+  };
 }
 
 // export interface RootObject {
@@ -93,5 +97,3 @@ export interface Cinemarooms{
 //     showings: Showing[];
 //     cinemarooms: Cinemarooms;
 // }
-
-

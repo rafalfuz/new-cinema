@@ -44,5 +44,13 @@
   </div>
   <div class="movie-rating">
     <p class="rate">{{ movie.movie.rating }} / 10</p>
+    <!-- <div class="rate-btns" *ngIf="visitorType === 'customer'">
+      <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
+      <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
+    </div> -->
+    <div class="rate-btns" *ngIf="(auth | async)?.auth === 'customer'">
+      <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
+      <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
+    </div>
   </div>
 </div>
