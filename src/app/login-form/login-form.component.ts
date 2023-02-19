@@ -92,7 +92,7 @@ export class LoginFormComponent {
   ///HINDI
   proceedLogin() {
     if (this.form.valid) {
-      this.authService.getByCode('2').subscribe((res) => {
+      this.authService.getByCode(this.form.value.).subscribe((res) => {
         this.userdata = res;
         console.log(this.userdata);
       });
