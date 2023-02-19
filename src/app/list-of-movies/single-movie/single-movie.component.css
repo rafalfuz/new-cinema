@@ -1,5 +1,4 @@
 .movie-wrapper {
-  width: 90%;
   margin: 40px auto;
   display: flex;
   justify-content: center;
@@ -11,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.7);
+  transform: scale(0.6);
 }
 
 .movie-image-poster {

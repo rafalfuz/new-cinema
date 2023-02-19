@@ -1,4 +1,16 @@
 {
+  "log": [
+    {
+      "email": "rafalfuz@gmail.com",
+      "password": "1111",
+      "id": 1
+    },
+    {
+      "email": "1111",
+      "password": "1111",
+      "id": 2
+    }
+  ],
   "week": [
     "06-12-2022",
     "07.12.2022",
@@ -8,14 +20,21 @@
     "11.12.2022",
     "12.12.2022"
   ],
-  "user": {},
+  "user": [
+    {
+      "email": "rafalfuz@gmail.com",
+      "password": "1111",
+      "id": 1
+    },
+    {
+      "email": "johnKrasicky@gmail.com",
+      "password": "5555",
+      "id": 3
+    }
+  ],
   "repertoire": {
     "movieId": "movie-7493-11ed-89ed-499bb1f405dc",
-    "hours": [
-      "13:00",
-      "15:00",
-      "18:00"
-    ],
+    "hours": ["13:00", "15:00", "18:00"],
     "day": "06-12-2022"
   },
   "ticketInfo": [

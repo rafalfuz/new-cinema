@@ -23,6 +23,10 @@ import { FootbarComponent } from './footbar/footbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { MatInputModule } from '@angular/material/input';
     OrderFormComponent,
     PageNotFoundComponent,
     FootbarComponent,
+    AdminViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,9 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

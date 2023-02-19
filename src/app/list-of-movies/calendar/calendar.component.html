@@ -23,6 +23,7 @@
     *ngFor="let day of week"
     [routerLink]="['/repertoire/', day]"
     value="{{ day }}"
+    [checked]="'' || day === week[0]"
     >{{ day }}</mat-button-toggle
   >
 </mat-button-toggle-group>

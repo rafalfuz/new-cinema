@@ -1,8 +1,14 @@
-<div class="listOfMoviesWrapper">
-  <app-calendar></app-calendar>
+<app-calendar></app-calendar>
+<ng-container *ngIf="movies | async as movies; else loader">
+  <!-- <div class="listOfMoviesWrapper"> -->
+  <!-- <app-calendar></app-calendar> -->
   <app-single-movie
     class="listOfMovies"
-    *ngFor="let movie of movies | async"
+    *ngFor="let movie of movies"
     [movie]="movie"
   ></app-single-movie>
-</div>
+  <!-- </div> -->
+</ng-container>
+<ng-template class="spinner" #loader>
+  <mat-spinner></mat-spinner>
+</ng-template>

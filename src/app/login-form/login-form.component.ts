@@ -14,6 +14,8 @@ export class LoginFormComponent {
   private builder = inject(NonNullableFormBuilder);
   private router = inject(Router);
   form = this.createForm();
+  private confirmation = inject(AuthService);
+  userdata: any;
 
   private createForm() {
     return this.builder.group({
@@ -21,7 +23,12 @@ export class LoginFormComponent {
         validators: [Validators.required, Validators.email],
       }),
       password: this.builder.control('', {
-        validators: [Validators.required],
+        validators: [
+          Validators.required,
+          // Validators.pattern(
+          //   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+          // ),
+        ],
       }),
     });
   }
@@ -69,12 +76,26 @@ export class LoginFormComponent {
   //   }
   // }
 
+  //   login() {
+  //     this.authService
+  //       .login(this.form.value.email!, this.form.value.password!)
+  //       .subscribe((data) => {
+  //         localStorage.setItem('token', data.token);
+  //         this.router.navigate(['/']);
+  //       });
+  //   }
+
   login() {
-    this.authService
-      .login(this.form.value.email!, this.form.value.password!)
-      .subscribe((data) => {
-        localStorage.setItem('token', data.token);
-        this.router.navigate(['/']);
+    this.authService.login(this.form.getRawValue()).subscribe(console.log);
+  }
+
+  ///HINDI
+  proceedLogin() {
+    if (this.form.valid) {
+      this.authService.getByCode('2').subscribe((res) => {
+        this.userdata = res;
+        console.log(this.userdata);
       });
+    }
   }
 }

@@ -7,7 +7,8 @@
 <div class="container">
   <div class="login-view-container">
     <h1>Zaloguj</h1>
-    <form [formGroup]="form" class="form" (ngSubmit)="login()">
+    <!-- <form [formGroup]="form" class="form" (ngSubmit)="login()"> -->
+    <form [formGroup]="form" class="form" (ngSubmit)="proceedLogin()">
       <mat-form-field appearance="fill">
         <mat-label>Podaj e-mail</mat-label>
         <input
