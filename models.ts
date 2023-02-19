@@ -2,10 +2,10 @@ type AuthType = 'none' | 'admin' | 'customer';
 
 export interface User {
   id: number;
-  email: string;
   name: string;
+  email: string;
   password: string;
-  authType: AuthType;
+  role: AuthType;
 }
 
 export interface Reportaire {

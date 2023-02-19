@@ -9,7 +9,7 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
   styleUrls: ['./single-movie.component.css'],
 })
 export class SingleMovieComponent {
-  auth = inject(AuthService).auth$;
+  user = inject(AuthService).auth$;
   visitorType: string = '';
   isFullyBlown = false;
 

@@ -48,7 +48,7 @@
       <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
       <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
     </div> -->
-    <div class="rate-btns" *ngIf="(auth | async)?.auth === 'customer'">
+    <div class="rate-btns" *ngIf="(user | async)?.role === 'customer'">
       <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
       <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
     </div>

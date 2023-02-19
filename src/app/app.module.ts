@@ -16,17 +16,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FootbarComponent } from './footbar/footbar.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatMenuModule } from '@angular/material/menu';
 import { AdminViewComponent } from './admin-view/admin-view.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -48,14 +41,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatButtonToggleModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatMenuModule,
-    MatSnackBarModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
