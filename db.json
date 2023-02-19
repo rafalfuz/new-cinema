@@ -1,14 +1,18 @@
 {
-  "log": [
+  "user": [
     {
-      "email": "rafalfuz@gmail.com",
-      "password": "1111",
-      "id": 1
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@alekino.com",
+      "password": "LoveMargonRobbie90",
+      "role": "customer"
     },
     {
-      "email": "1111",
-      "password": "1111",
-      "id": 2
+      "id": 2,
+      "name": "Rafał",
+      "email": "rafalfuz@gmail.com",
+      "password": "LoveEliOlsen90",
+      "role": "customer"
     }
   ],
   "week": [
@@ -19,18 +23,6 @@
     "10.12.2022",
     "11.12.2022",
     "12.12.2022"
-  ],
-  "user": [
-    {
-      "email": "rafalfuz@gmail.com",
-      "password": "1111",
-      "id": 1
-    },
-    {
-      "email": "johnKrasicky@gmail.com",
-      "password": "5555",
-      "id": 3
-    }
   ],
   "repertoire": {
     "movieId": "movie-7493-11ed-89ed-499bb1f405dc",
