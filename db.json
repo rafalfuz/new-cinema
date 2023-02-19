@@ -1,14 +1,14 @@
 {
   "user": [
     {
-      "id": 1,
+      "id": "admin@alekino.com",
       "name": "Admin",
       "email": "admin@alekino.com",
       "password": "LoveMargonRobbie90",
-      "role": "customer"
+      "role": "admin"
     },
     {
-      "id": 2,
+      "id": "rafalfuz@gmail.com",
       "name": "Rafał",
       "email": "rafalfuz@gmail.com",
       "password": "LoveEliOlsen90",

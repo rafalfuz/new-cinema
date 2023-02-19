@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, filter, map, Observable, skip, tap } from 'rxjs';
 import { User } from 'models';
 import { AuthResponse } from './auth-response.interface';
+import { ToastrService } from 'ngx-toastr';
 
 export type LoginCredentials = { email: string; password: string };
 
@@ -11,6 +12,12 @@ export type LoginCredentials = { email: string; password: string };
   providedIn: 'root',
 })
 export class AuthService {
+  constructor() {
+    this.setStateFromLocalStorage();
+    this.onHasAuthChange();
+    this.logoutCallBetterLaterThisFn();
+  }
+  private toast = inject(ToastrService);
   private http = inject(HttpClient);
   private router = inject(Router);
   private apiurl = 'http://localhost:3000/user';
@@ -34,25 +41,19 @@ export class AuthService {
   }
 
   getUserName() {
-    return this.user$$.subscribe((data) => console.log(data));
+    return this.user$$.subscribe((data) => console.log(data.name));
   }
 
   get authValue() {
     return this.confirm$$.value;
   }
 
-  getAllUsers() {
+  getAll() {
     return this.http.get(this.apiurl);
   }
 
-  getByCode(code: number) {
+  getByCode(code: any) {
     return this.http.get(this.apiurl + '/' + code);
-  }
-
-  constructor() {
-    this.setStateFromLocalStorage();
-    this.onHasAuthChange();
-    this.logoutCallBetterLaterThisFn();
   }
 
   login(credentials: { email: string; password: string }) {
@@ -76,9 +77,24 @@ export class AuthService {
       );
   }
 
+  log(user: User) {
+    this.confirm$$.next({ hasAuth: true });
+    this.user$$.next(user);
+    this.router.navigate(['']);
+  }
+
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
     this.confirm$$.next({ hasAuth: false });
+    this.user$$.next({
+      id: 0,
+      name: '',
+      email: '',
+      password: '',
+      role: 'none',
+    });
+    this.toast.success('Zostałes poprawnie wylogowany');
   }
   // private router = inject(Router);
 

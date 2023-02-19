@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FootbarComponent } from './footbar/footbar.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { MaterialModule } from 'src/material.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MaterialModule } from 'src/material.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

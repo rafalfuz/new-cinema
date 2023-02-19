@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'models';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService, LoginCredentials } from '../auth/auth.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class LoginFormComponent {
   form = this.createForm();
   private confirmation = inject(AuthService);
   userdata: any;
+  private toast = inject(ToastrService);
 
   private createForm() {
     return this.builder.group({
@@ -52,49 +54,19 @@ export class LoginFormComponent {
     return this.emailCtrl.hasError('email') ? 'Nieprawidłowy adres email' : '';
   }
 
-  // login() {
-  //   this.form.markAllAsTouched();
-  //   if (this.form.valid) {
-  //     this.authService.login(this.form.value as LoginCredentials);
-  //     // this.router.navigate(['/']);
-  //   }
-  // }
-
-  // login() {
-  //   this.form.markAllAsTouched();
-  //   if (this.form.valid) {
-  //     this.authService
-  //       .loginSimpleWay(this.form.value as LoginCredentials)
-  //       .subscribe(
-  //         (suc) => {
-  //           console.log(suc);
-  //         },
-  //         (err) => {
-  //           console.log(err);
-  //         }
-  //       );
-  //   }
-  // }
-
-  //   login() {
-  //     this.authService
-  //       .login(this.form.value.email!, this.form.value.password!)
-  //       .subscribe((data) => {
-  //         localStorage.setItem('token', data.token);
-  //         this.router.navigate(['/']);
-  //       });
-  //   }
-
-  login() {
-    this.authService.login(this.form.getRawValue()).subscribe(console.log);
-  }
-
-  ///HINDI
   proceedLogin() {
     if (this.form.valid) {
-      this.authService.getByCode(this.form.value.).subscribe((res) => {
+      this.authService.getByCode(this.form.value.email).subscribe((res) => {
         this.userdata = res;
         console.log(this.userdata);
+        if (this.userdata.password === this.form.value.password) {
+          localStorage.setItem('userId:', this.userdata.id);
+          localStorage.setItem('userRole:', this.userdata.role);
+          this.authService.log(this.userdata);
+          this.toast.success(`Zostałes zalogowany jako ${this.userdata.name}`);
+        } else {
+          this.toast.error('Błędne hasło. Spróbuj ponowanie');
+        }
       });
     }
   }
