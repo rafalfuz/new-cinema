@@ -24,6 +24,9 @@ const routes: Routes = [
     component: LoginFormComponent,
   },
   {
+    path: 'bucket-list',
+  },
+  {
     path: 'admin',
     component: AdminViewComponent,
     canActivate: [adminAuthGuard],
