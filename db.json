@@ -4,15 +4,22 @@
       "id": "admin@alekino.com",
       "name": "Admin",
       "email": "admin@alekino.com",
-      "password": "LoveMargonRobbie90",
+      "password": "admin",
       "role": "admin"
     },
     {
       "id": "rafalfuz@gmail.com",
       "name": "Rafał",
       "email": "rafalfuz@gmail.com",
-      "password": "LoveEliOlsen90",
+      "password": "envelo90",
       "role": "customer"
+    },
+    {
+      "id": "izakrzan@onlyfans.com",
+      "name": "Izabella",
+      "email": "izakrzan@onlyfans.com",
+      "password": "1111",
+      "role": "none"
     }
   ],
   "week": [

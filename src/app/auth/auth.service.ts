@@ -5,6 +5,7 @@ import { BehaviorSubject, filter, map, Observable, skip, tap } from 'rxjs';
 import { User } from 'models';
 import { AuthResponse } from './auth-response.interface';
 import { ToastrService } from 'ngx-toastr';
+import { AuthType } from 'models';
 
 export type LoginCredentials = { email: string; password: string };
 
@@ -13,16 +14,16 @@ export type LoginCredentials = { email: string; password: string };
 })
 export class AuthService {
   constructor() {
-    this.setStateFromLocalStorage();
-    this.onHasAuthChange();
-    this.logoutCallBetterLaterThisFn();
+    // this.setStateFromLocalStorage();
+    // this.onHasAuthChange();
+    // this.logoutCallBetterLaterThisFn();
   }
   private toast = inject(ToastrService);
   private http = inject(HttpClient);
   private router = inject(Router);
   private apiurl = 'http://localhost:3000/user';
   private user$$ = new BehaviorSubject<User>({
-    id: 0,
+    id: '',
     name: '',
     email: '',
     password: '',
@@ -56,26 +57,26 @@ export class AuthService {
     return this.http.get(this.apiurl + '/' + code);
   }
 
-  login(credentials: { email: string; password: string }) {
-    return this.http
-      .post<AuthResponse>('http://localhost:3000/log', {
-        email: credentials.email,
-        password: credentials.password,
-      })
-      .pipe(
-        tap({
-          next: (res) => {
-            localStorage.setItem('token', res.token);
-            this.confirm$$.next({ hasAuth: true });
-            this.router.navigate(['']);
-            alert('Zostałes zalogowany');
-          },
-          error: () => {
-            alert('error');
-          },
-        })
-      );
-  }
+  // login(credentials: { email: string; password: string }) {
+  //   return this.http
+  //     .post<AuthResponse>('http://localhost:3000/log', {
+  //       email: credentials.email,
+  //       password: credentials.password,
+  //     })
+  //     .pipe(
+  //       tap({
+  //         next: (res) => {
+  //           localStorage.setItem('token', res.token);
+  //           this.confirm$$.next({ hasAuth: true });
+  //           this.router.navigate(['']);
+  //           alert('Zostałes zalogowany');
+  //         },
+  //         error: () => {
+  //           alert('error');
+  //         },
+  //       })
+  //     );
+  // }
 
   log(user: User) {
     this.confirm$$.next({ hasAuth: true });
@@ -83,12 +84,25 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
+  autoLogin() {
+    console.log('AutoLoggin works!');
+    if (localStorage.getItem('userId')) {
+      this.confirm$$.next({ hasAuth: true });
+      this.user$$.next({
+        ...this.user$$.value,
+        id: localStorage.getItem('userId'),
+        name: localStorage.getItem('userName'),
+        role: localStorage.getItem('userRole'),
+      });
+    }
+  }
+
   logout() {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userRole');
+    localStorage.clear();
+
     this.confirm$$.next({ hasAuth: false });
     this.user$$.next({
-      id: 0,
+      id: '',
       name: '',
       email: '',
       password: '',

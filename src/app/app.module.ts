@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,11 @@ import { FootbarComponent } from './footbar/footbar.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { MaterialModule } from 'src/material.module';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthService } from './auth/auth.service';
+
+function initFactory(initService: AuthService) {
+  return () => initService.autoLogin();
+}
 
 @NgModule({
   declarations: [
@@ -45,7 +50,14 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFactory,
+      deps: [AuthService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

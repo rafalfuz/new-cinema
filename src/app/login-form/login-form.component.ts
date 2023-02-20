@@ -58,10 +58,11 @@ export class LoginFormComponent {
     if (this.form.valid) {
       this.authService.getByCode(this.form.value.email).subscribe((res) => {
         this.userdata = res;
-        console.log(this.userdata);
+        console.log('res-user z form:', this.userdata);
         if (this.userdata.password === this.form.value.password) {
-          localStorage.setItem('userId:', this.userdata.id);
-          localStorage.setItem('userRole:', this.userdata.role);
+          localStorage.setItem('userId', this.userdata.id);
+          localStorage.setItem('userName', this.userdata.name);
+          localStorage.setItem('userRole', this.userdata.role);
           this.authService.log(this.userdata);
           this.toast.success(`Zostałes zalogowany jako ${this.userdata.name}`);
         } else {

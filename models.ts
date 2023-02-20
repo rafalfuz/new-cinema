@@ -1,11 +1,11 @@
-type AuthType = 'none' | 'admin' | 'customer';
+export type AuthType = 'none' | 'admin' | 'customer' | null;
 
 export interface User {
-  id: number;
-  name: string;
+  id: string | null;
+  name: string | null;
   email: string;
   password: string;
-  role: AuthType;
+  role: AuthType | string;
 }
 
 export interface Reportaire {
