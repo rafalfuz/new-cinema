@@ -1,0 +1,30 @@
+<mat-card class="single-watch-record-class">
+  <mat-card-header>
+    <mat-card-title class="title">{{ dataMovie.title }}</mat-card-title>
+    <mat-card-subtitle class="genre">{{ dataMovie.genre }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div (click)="selectVideo(dataMovie)" class="videoWrapper">
+      <youtube-player
+        [height]="325"
+        [width]="700"
+        [videoId]="videoId"
+      ></youtube-player>
+    </div>
+    <p class="description">{{ dataMovie.descriptionShort }}</p>
+    <div class="details">
+      <p>
+        Duration:
+        {{ dataMovie.runTime }} minutes
+      </p>
+      <p>Age category: {{ dataMovie.pg }}</p>
+      <p>Cast: {{ dataMovie.cast }}</p>
+    </div>
+
+    <mat-card-footer class="footer">
+      <button class="btn" mat-stroked-button (click)="remove(record.movie)">
+        Usuń z sekcji Chcę obejrzeć
+      </button></mat-card-footer
+    >
+  </mat-card-content>
+</mat-card>

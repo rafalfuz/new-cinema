@@ -22,6 +22,7 @@ export interface TicketInfo {
 export interface Movies {
   id: string;
   title: string;
+  videoId: string;
   image: string;
   descriptionShort: string;
   rating: number;
@@ -31,6 +32,7 @@ export interface Movies {
   pg: number;
   genre: string;
   day: string;
+  cast: string;
 }
 
 export interface Hour {

@@ -44,13 +44,17 @@
   </div>
   <div class="movie-rating">
     <p class="rate">{{ movie.movie.rating }} / 10</p>
-    <!-- <div class="rate-btns" *ngIf="visitorType === 'customer'">
-      <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
-      <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
-    </div> -->
     <div class="rate-btns" *ngIf="(user | async)?.role === 'customer'">
-      <button class="rate-btn" mat-stroked-button>Oceń ten film!</button>
-      <button class="rate-btn" mat-stroked-button>Chcę zobaczyć</button>
+      <button class="rate-btn" mat-stroked-button (click)="openDialog()">
+        Oceń ten film!
+      </button>
+      <button
+        class="rate-btn"
+        mat-stroked-button
+        (click)="toggleDeclareToWatchList(movie.movie.id)"
+      >
+        {{ declaredToWatchList ? "Nie chcę obejrzeć" : "Chcę obejrzeć" }}
+      </button>
     </div>
   </div>
 </div>

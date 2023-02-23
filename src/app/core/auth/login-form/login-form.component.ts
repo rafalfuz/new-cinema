@@ -3,7 +3,7 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService, LoginCredentials } from '../auth/auth.service';
+import { AuthService, LoginCredentials } from '../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -58,7 +58,6 @@ export class LoginFormComponent {
     if (this.form.valid) {
       this.authService.getByCode(this.form.value.email).subscribe((res) => {
         this.userdata = res;
-        console.log('res-user z form:', this.userdata);
         if (this.userdata.password === this.form.value.password) {
           localStorage.setItem('userId', this.userdata.id);
           localStorage.setItem('userName', this.userdata.name);

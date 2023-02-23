@@ -1,15 +1,12 @@
-import { inject, NgModule } from '@angular/core';
-import { CanActivateFn, RouterModule, Routes } from '@angular/router';
-import { CalendarComponent } from './list-of-movies/calendar/calendar.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { ListOfMoviesComponent } from './list-of-movies/list-of-movies.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { OrderFormComponent } from './order-form/order-form.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { AdminViewComponent } from './admin-view/admin-view.component';
-import { AuthService } from './auth/auth.service';
-import { map, tap } from 'rxjs';
-import { adminAuthGuard } from './auth/admin-auth.guard';
+import { LoginFormComponent } from './core/auth/login-form/login-form.component';
+import { OrderFormComponent } from './movies/order-form/order-form.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { AdminViewComponent } from './core/admin-view/admin-view.component';
+import { adminAuthGuard } from './core/auth/admin-auth.guard';
+import { WatchListComponent } from './movies/watch-list/watch-list.component';
 
 const routes: Routes = [
   {
@@ -24,7 +21,8 @@ const routes: Routes = [
     component: LoginFormComponent,
   },
   {
-    path: 'bucket-list',
+    path: 'watch-list',
+    component: WatchListComponent,
   },
   {
     path: 'admin',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Movies, Reperoire } from 'models';
 import { EMPTY, Observable, switchMap, tap } from 'rxjs';
-import { HttpMoviesService } from '../services/http-movies.service';
+import { HttpMoviesService } from '../movies/services/http-movies.service';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 

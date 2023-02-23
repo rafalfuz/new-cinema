@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpMoviesService } from 'src/app/services/http-movies.service';
+import { HttpMoviesService } from 'src/app/movies/services/http-movies.service';
 
 @Component({
   selector: 'app-calendar',
