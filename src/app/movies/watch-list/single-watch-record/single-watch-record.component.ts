@@ -40,5 +40,6 @@ export class SingleWatchRecordComponent {
 
   remove(title: string) {
     this.watchListService.removeFromWatchList(title);
+    window.location.reload();
   }
 }
