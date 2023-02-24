@@ -1,4 +1,4 @@
-<ng-container *ngIf="list$ | async as records; else loader">
+<ng-container *ngIf="watchList$ | async as records; else loader">
   <app-single-watch-record
     *ngFor="let record of records"
     [record]="record"

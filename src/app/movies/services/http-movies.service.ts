@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Movies, Reperoire } from 'models';
-import { filter, map, Observable, tap } from 'rxjs';
+import { filter, map, Observable, switchMap, tap } from 'rxjs';
 import { WatchListService } from '../watch-list/watch-list.service';
 
 @Injectable({

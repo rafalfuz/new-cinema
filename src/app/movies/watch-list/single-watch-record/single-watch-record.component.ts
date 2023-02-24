@@ -10,7 +10,7 @@ import { WatchListService } from '../watch-list.service';
   styleUrls: ['./single-watch-record.component.css'],
 })
 export class SingleWatchRecordComponent {
-  @Input() record!: any;
+  @Input() record: any;
   watchListService = inject(WatchListService);
   dataMovie!: Movies;
   apiLoaded = false;
