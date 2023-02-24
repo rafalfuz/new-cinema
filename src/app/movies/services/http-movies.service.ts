@@ -25,12 +25,18 @@ export class HttpMoviesService {
     const result = this.getRepertoire().pipe(
       map((movies) => movies.filter((movie) => movie.day === day))
     );
+    // .pipe(tap(console.log))
+
     return result;
   }
 
-  // getMovieRecordByTitle(title: string) {
-  //   return this.http.get(`${this.url}/movies/${title}`);
-  // }
+  getMovieRecordByTitle(title: string) {
+    return this.http.get(`${this.url}/movies/${title}`);
+  }
+
+  getMoviesByTitle() {
+    return this.http.get(`this.localhost`);
+  }
 
   getDate(): Observable<string[]> {
     return this.http.get<string[]>(this.url + '/week');

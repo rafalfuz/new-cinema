@@ -14,4 +14,7 @@ export class WatchListComponent {
   movieService = inject(HttpMoviesService);
 
   list$ = this.watchListService.getRecordsByUsersName();
+
+  watchList$ = this.watchListService.fetchWatchList();
+  ngOnInit() {}
 }

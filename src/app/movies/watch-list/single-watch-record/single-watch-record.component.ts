@@ -10,7 +10,7 @@ import { WatchListService } from '../watch-list.service';
   styleUrls: ['./single-watch-record.component.css'],
 })
 export class SingleWatchRecordComponent {
-  @Input() record!: WatchListRecord;
+  @Input() record!: any;
   watchListService = inject(WatchListService);
   dataMovie!: Movies;
   apiLoaded = false;
@@ -25,12 +25,15 @@ export class SingleWatchRecordComponent {
       this.apiLoaded = true;
     }
 
-    this.watchListService
-      .getMovieRecordByTitle(this.record.movie)
-      .subscribe((data: any) => {
-        this.dataMovie = data;
-        this.videoId = data.videoId;
-      });
+    // this.watchListService
+    //   .getMovieRecordByTitle(this.record.movie)
+    //   .subscribe((data: any) => {
+    //     this.dataMovie = data;
+    //     this.videoId = data.videoId;
+    //   });
+
+    //  this.watchListService.getMovieRecordByTitle(this.record.movie)
+    this.watchListService.fetchWatchList();
   }
 
   selectVideo(video: Movies) {
@@ -40,5 +43,6 @@ export class SingleWatchRecordComponent {
 
   remove(title: string) {
     this.watchListService.removeFromWatchList(title);
+    window.location.reload();
   }
 }

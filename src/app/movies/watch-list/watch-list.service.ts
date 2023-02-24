@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Movies } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
 
 export interface WatchListRecord {
@@ -22,19 +22,30 @@ export class WatchListService {
   private moviesUrl = 'http://localhost:3000/movies';
   existInDb = false;
   currentUser: string | null = '';
+  private watchList$$ = new BehaviorSubject<Movies[]>([]);
 
   constructor() {
     this.authService.auth$.subscribe((data) => (this.currentUser = data.id));
   }
 
-  getMovieRecordByTitle(title: string) {
-    return this.http.get(`${this.moviesUrl}/${title}`);
+  fetchWatchList() {
+    return this.http.get<Movies[]>(this.url);
+  }
+
+  fetchWatchListById(id: string | number) {
+    return this.http.get<Movies>(`${this.url}/${id}`);
+  }
+
+  getWatchList$() {
+    return this.watchList$$.asObservable();
+  }
+
+  getMovieRecordByTitle$(title: string) {
+    return this.http.get<Movies>(`${this.moviesUrl}/${title}`);
   }
 
   getAll() {
-    return this.http
-      .get<WatchListRecord[]>(this.url)
-      .subscribe((data) => console.log(data));
+    return this.http.get<WatchListRecord[]>(this.url);
   }
 
   addMovieToWatchList(title: string) {
