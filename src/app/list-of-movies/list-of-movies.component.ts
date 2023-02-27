@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Movies, Reperoire } from 'models';
-import { EMPTY, Observable, switchMap, tap } from 'rxjs';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Reperoire } from 'models';
+import { Observable, switchMap } from 'rxjs';
 import { HttpMoviesService } from '../movies/services/http-movies.service';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -18,6 +18,7 @@ export class ListOfMoviesComponent {
   movies: Observable<Reperoire[]> = this.route.paramMap.pipe(
     switchMap((params) => {
       const day = params.get('day');
+      console.log(params);
       return day
         ? this.http.getMoviesByDay(day)
         : this.http.getMoviesByDay('06-12-2022');

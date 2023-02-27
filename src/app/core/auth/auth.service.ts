@@ -3,9 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, filter, map, Observable, skip, tap } from 'rxjs';
 import { User } from 'models';
-import { AuthResponse } from './auth-response.interface';
 import { ToastrService } from 'ngx-toastr';
-import { AuthType } from 'models';
 
 export type LoginCredentials = { email: string; password: string };
 
@@ -47,10 +45,6 @@ export class AuthService {
 
   get selectUserId$() {
     return this.user$$.pipe(map((user) => user.id));
-  }
-
-  getUserName() {
-    return this.user$$.subscribe((data) => console.log(data.name));
   }
 
   get authValue() {

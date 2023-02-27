@@ -1,12 +1,13 @@
 import { Component, inject, Input } from '@angular/core';
 import { Movies, Reperoire } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
+import { filter, map, Observable, of, switchMap, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { WatchListService } from 'src/app/movies/watch-list/watch-list.service';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogRateComponent } from './dialog-rate/dialog-rate.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-movie',
@@ -15,11 +16,13 @@ import { DialogRateComponent } from './dialog-rate/dialog-rate.component';
 })
 export class SingleMovieComponent {
   dialog = inject(MatDialog);
+  router = inject(Router);
   user = inject(AuthService).auth$;
   watchListService = inject(WatchListService);
   toast = inject(ToastrService);
   isFullyBlown = false;
-  declaredToWatchList = false;
+  declaredToWatchList?: boolean;
+  currentUser!: any;
   @Input() movie!: Reperoire;
 
   handleVisibiltyDescription() {
@@ -35,38 +38,15 @@ export class SingleMovieComponent {
   }
 
   toggleDeclareToWatchList(title: string) {
-    //   this.watchListService.getMatchingRecord(title).subscribe({
-    //     // next: () => this.toast.error('Ten record juz jest w bazie'),
-    //     // error: () => this.removeFromWatchList(title),
-    //     next: (data) => {
-    //       if (data.length !== 0) {
-    //         this.toast.error('Ten record juz jest w bazie');
-    //       }
-    //     },
-    //     error: () => this.removeFromWatchList(title),
-    //   });
-    // }
     if (this.declaredToWatchList) {
-      //Jak tutaj zrobic warunek?
       this.removeFromWatchList(title);
     } else {
       this.addToWatchList(title);
     }
   }
 
-  getAll() {
-    return this.watchListService.getAll();
-  }
-
-  getSelected(title: string) {
-    this.watchListService.getMatchingRecord(title);
-    return console.log();
-  }
-
   addToWatchList(title: string) {
     this.watchListService.getMatchingRecord(title).subscribe({
-      // next: () => this.toast.error('Ten record juz jest w bazie'),
-      // error: () => this.removeFromWatchList(title),
       next: (data) => {
         if (data.length === 0) {
           this.watchListService.addMovieToWatchList(title);
@@ -86,5 +66,38 @@ export class SingleMovieComponent {
     this.declaredToWatchList = false;
   }
 
-  ngOnInit() {}
+  checkDeclaredToWatchStatus() {
+    // const movieTitle = this.movie.movie.id;
+    // this.watchListService.watchList$.subscribe((data) => {
+    //   data.map((data) => {
+    //     if (data.movie === movieTitle && data.idUser === this.currentUser) {
+    //       this.declaredToWatchList = true;
+    //     } else {
+    //       this.declaredToWatchList = false;
+    //     }
+    //   });
+    // });
+  }
+  navigateToReservation(
+    day: string,
+    time: string,
+    cinemaRoomId: string,
+    showingId: string
+  ) {
+    this.router.navigate(['/reservation', day, time, cinemaRoomId, showingId]);
+  }
+
+  ngOnInit() {
+    this.user
+      .pipe(
+        tap({
+          next: (data) => {
+            this.currentUser = data.id;
+          },
+        })
+      )
+      .subscribe();
+
+    // this.checkDeclaredToWatchStatus();
+  }
 }

@@ -1,9 +1,49 @@
 {
+  "rooms": [
+    {
+      "id": "sala1",
+      "name": "Niagara",
+      "rows": 16,
+      "columns": 9
+    },
+    {
+      "id": "sala2",
+      "name": "Zamzibar",
+      "rows": 10,
+      "columns": 6
+    },
+    {
+      "id": "sala3",
+      "name": "Akwarium",
+      "rows": 8,
+      "columns": 8
+    }
+  ],
   "watchList": [
     {
-      "id": 1677186898755,
+      "id": 1677365882231,
+      "idUser": "izakrzan@onlyfans.com",
+      "movie": "top-gun-maverick"
+    },
+    {
+      "id": 1677365887687,
+      "idUser": "izakrzan@onlyfans.com",
+      "movie": "arcane - league of legends"
+    },
+    {
+      "id": 1677506782712,
       "idUser": "rafalfuz@gmail.com",
-      "movie": "spider-man-into-the-spider-verse-123"
+      "movie": "top-gun-maverick"
+    },
+    {
+      "id": 1677507856740,
+      "idUser": "izakrzan@onlyfans.com",
+      "movie": "avengers-endgame"
+    },
+    {
+      "id": 1677507858084,
+      "idUser": "izakrzan@onlyfans.com",
+      "movie": "spider-man-into-the-spider-verse"
     }
   ],
   "user": [
@@ -78,7 +118,7 @@
       "cast": "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner, Paul Rudd, Brie Larson, Bradley Cooper, Benedict Cumberbatch, Elizabeth Olsen❤, Tom Holland, Zoe Saldana, "
     },
     {
-      "id": "spider-man-into-the-spider-verse-123",
+      "id": "spider-man-into-the-spider-verse",
       "title": "Spider-Man: Into the Spider-Verse",
       "videoId": "cqGjhVJWtEg",
       "image": "https://www.imdb.com/title/tt4633694/mediaviewer/rm173371392/?ref_=tt_ov_i",
@@ -106,6 +146,21 @@
       "genre": "Action",
       "day:": "07-12-2022",
       "cast": "Tom Cruise, Val Kilmer, Miles Teller, Jennifer Connelly, Bashir Salahuddin, Jon Hamm"
+    },
+    {
+      "id": "arcane - league of legends",
+      "title": "Arcane",
+      "videoId": "DQFJHusZS5c",
+      "image": "https://m.media-amazon.com/images/M/MV5BYmU5OWM5ZTAtNjUzOC00NmUyLTgyOWMtMjlkNjdlMDAzMzU1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg",
+      "descriptionShort": "Set in Utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League Of Legends champions and the power that will tear them apart..",
+      "rating": 9,
+      "votesNumber": 911,
+      "premiere": false,
+      "runTime": 130,
+      "pg": 16,
+      "genre": "TV Series",
+      "day:": "10-12-2022",
+      "cast": "Hailee Steinfeld, Kevin Alejando, Jason Spisak"
     }
   ],
   "reperoire": [
@@ -126,18 +181,18 @@
       "hours": [
         {
           "time": "15:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-15-a"
+          "roomId": "sala1",
+          "showingId": "06-12-22-15-00-niagara-avengers-endgame"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-17-a"
+          "roomId": "sala1",
+          "showingId": "06-12-22-17-00-niagara-avengers-endgame"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "06-20-b"
+          "roomId": "sala1",
+          "showingId": "06-12-22-20-00-niagara-avengers-endgame"
         }
       ]
     },
@@ -158,24 +213,24 @@
       "hours": [
         {
           "time": "15:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-15-a"
+          "roomId": "sala1",
+          "showingId": "12-12-22-15-00-niagara-avengers-endgame"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-17-a"
+          "roomId": "sala1",
+          "showingId": "12-12-22-17-00-niagara-avengers-endgame"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "06-20-b"
+          "roomId": "sala2",
+          "showingId": "12-12-22-20-00-zanzibar-avengers-endgame"
         }
       ]
     },
     {
       "movie": {
-        "id": "spider-man-into-the-spider-verse-123",
+        "id": "spider-man-into-the-spider-verse",
         "title": "Spider-Man: Into the Spider-Verse",
         "image": "https://m.media-amazon.com/images/M/MV5BOTI1NTA0MTQ4Nl5BMl5BanBnXkFtZTgwNjkwNTQ3NjM@._V1_FMjpg_UX1000_.jpg",
         "descriptionShort": "Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
@@ -190,18 +245,18 @@
       "hours": [
         {
           "time": "15:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "06-15-b"
+          "roomId": "sala2",
+          "showingId": "06-12-22-15-00-zanzibar-spider-man-into-the-spider-verse"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "06-17-c"
+          "roomId": "sala3",
+          "showingId": "06-12-22-17-00-akwarium-spider-man-into-the-spider-verse"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-20-a"
+          "roomId": "sala1",
+          "showingId": "06-12-22-20-00-niagara-spider-man-into-the-spider-verse"
         }
       ]
     },
@@ -222,23 +277,23 @@
       "hours": [
         {
           "time": "12:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "06-12-a"
+          "roomId": "sala1",
+          "showingId": "06-12-22-12-00-niagara-top-gun-maverick"
         },
         {
           "time": "14:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "06-14-c"
+          "roomId": "sala3",
+          "showingId": "06-12-22-14-00-akwarium-top-gun-maverick"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "06-17-b"
+          "roomId": "sala2",
+          "showingId": "06-12-22-17-00-zanzibar-top-gun-maverick"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "06-20-c"
+          "cinemaRoomId": "sala3",
+          "showingId": "06-12-22-20-00-akwarium-top-gun-maverick"
         }
       ]
     },
@@ -259,18 +314,18 @@
       "hours": [
         {
           "time": "15:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "07-15-a"
+          "roomId": "sala1",
+          "showingId": "07-12-22-15-00-niagara-top-gun-maverick"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "07-17-a"
+          "roomId": "sala1",
+          "showingId": "07-12-22-17-00-niagara-top-gun-maverick"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "07-20-b"
+          "roomId": "sala2",
+          "showingId": "07-12-22-20-00-zanzibar-top-gun-maverick"
         }
       ]
     },
@@ -291,24 +346,24 @@
       "hours": [
         {
           "time": "15:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "07-15-b"
+          "roomId": "sala2",
+          "showingId": "07-12-22-15-00-zanzibar-avengers-endgame"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "07-17-c"
+          "roomId": "sala3",
+          "showingId": "07-12-22-17-00-akwarium-avengers-endgame"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "07-20-a"
+          "roomId": "sala1",
+          "showingId": "07-12-22-20-00-niagara-avengers-endgame"
         }
       ]
     },
     {
       "movie": {
-        "id": "spider-man-into-the-spider-verse-123",
+        "id": "spider-man-into-the-spider-verse",
         "title": "Spider-Man: Into the Spider-Verse",
         "image": "https://m.media-amazon.com/images/M/MV5BOTI1NTA0MTQ4Nl5BMl5BanBnXkFtZTgwNjkwNTQ3NjM@._V1_FMjpg_UX1000_.jpg",
         "descriptionShort": "Teen Miles Morales becomes the Spider-Man of his universe, and must join with five spider-powered individuals from other dimensions to stop a threat for all realities.",
@@ -323,32 +378,64 @@
       "hours": [
         {
           "time": "12:00",
-          "cinemaRoomId": "room-a",
-          "showingId": "07-12-a"
+          "roomId": "sala1",
+          "showingId": "07-12-22-12-00-niagara-spider-man-into-the-spider-verse"
         },
         {
           "time": "14:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "07-14-c"
+          "roomId": "sala3",
+          "showingId": "07-12-22-14-00-akwarium-spider-man-into-the-spider-verse"
         },
         {
           "time": "17:00",
-          "cinemaRoomId": "room-b",
-          "showingId": "07-17-b"
+          "roomId": "sala2",
+          "showingId": "07-12-22-17-00-zanzibar-spider-man-into-the-spider-verse"
         },
         {
           "time": "20:00",
-          "cinemaRoomId": "room-c",
-          "showingId": "07-20-c"
+          "roomId": "sala3",
+          "showingId": "07-12-22-20-00-akwarium-spider-man-into-the-spider-verse"
+        }
+      ]
+    },
+    {
+      "movie": {
+        "id": "arcane - league of legends",
+        "title": "Arcane",
+        "image": "https://m.media-amazon.com/images/M/MV5BYmU5OWM5ZTAtNjUzOC00NmUyLTgyOWMtMjlkNjdlMDAzMzU1XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg",
+        "descriptionShort": "Set in Utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League Of Legends champions and the power that will tear them apart.",
+        "rating": 9,
+        "votesNumber": 911,
+        "premiere": false,
+        "runTime": 181,
+        "pg": 13,
+        "genre": "TV Series"
+      },
+      "day": "10-12-2022",
+      "hours": [
+        {
+          "time": "15:00",
+          "roomId": "sala1",
+          "showingId": "10-12-22-15-00-niagara-arcane - league of legends"
+        },
+        {
+          "time": "17:00",
+          "roomId": "sala1",
+          "showingId": "10-12-22-17-00-niagara-arcane - league of legends"
+        },
+        {
+          "time": "20:00",
+          "roomId": "sala2",
+          "showingId": "10-12-22-20-00-zanzibar-arcane - league of legends"
         }
       ]
     }
   ],
   "showings": [
     {
-      "id": "06-15-a",
-      "movieTitle": "Avengers: Endgame",
-      "cinemaRoomId": "room-a",
+      "id": "06-12-22-15-00-niagara-avengers-endgame",
+      "roomId": "sala1",
+      "movieId": "avengers-endgame",
       "takenSeats": [
         {
           "position": {
@@ -372,10 +459,38 @@
           "isBusy": true
         }
       ]
+    },
+    {
+      "id": "06-12-22-17-00-niagara-avengers-endgame",
+      "roomId": "sala1",
+      "movieId": "avengers-endgame",
+      "takenSeats": [
+        {
+          "position": {
+            "row": "E",
+            "column": "6"
+          },
+          "isBusy": true
+        },
+        {
+          "position": {
+            "row": "A",
+            "column": "7"
+          },
+          "isBusy": true
+        },
+        {
+          "position": {
+            "row": "H",
+            "column": "9"
+          },
+          "isBusy": true
+        }
+      ]
     }
   ],
-  "cinemarooms": {
-    "id": "room-a",
+  "cinemaRooms": {
+    "id": "1",
     "seats": [
       [
         {

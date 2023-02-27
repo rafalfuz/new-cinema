@@ -1,5 +1,18 @@
 export type AuthType = 'none' | 'admin' | 'customer' | null;
 
+export interface Room {
+  id: number;
+  name: string;
+  rows: number;
+  columns: number;
+}
+
+export interface WatchListRecord {
+  id: number;
+  idUser: string;
+  movie: string;
+}
+
 export interface User {
   id: string | null;
   name: string | null;
@@ -37,7 +50,7 @@ export interface Movies {
 
 export interface Hour {
   time: string;
-  cinemaRoomId: string;
+  roomId: string;
   showingId: string;
 }
 
@@ -72,8 +85,8 @@ export interface TakenSeat {
 
 export interface Showing {
   id: string;
-  movieTitle: string;
-  cinemaRoomId: string;
+  roomId: string;
+  movieId: string;
   takenSeats: TakenSeat[];
 }
 
@@ -89,6 +102,20 @@ export interface Cinemarooms {
     isBusy: boolean;
     status: boolean;
   };
+}
+
+export interface ShowingDatas {
+  id: string;
+  roomId: string;
+  movieId: string;
+  takenSeats: TakenSeat[];
+  room: {
+    id: string;
+    name: string;
+    rows: string;
+    columns: string;
+  };
+  movie: Movie;
 }
 
 // export interface RootObject {

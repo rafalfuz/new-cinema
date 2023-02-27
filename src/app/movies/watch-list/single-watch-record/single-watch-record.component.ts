@@ -1,20 +1,16 @@
-import { Component, ElementRef, inject, Input, ViewChild } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Movies } from 'models';
-import { map, Observable, of, switchMap, tap } from 'rxjs';
-import { WatchListRecord } from '../watch-list.service';
 import { WatchListService } from '../watch-list.service';
 
 @Component({
-  selector: 'app-single-watch-record[record]',
+  selector: 'app-single-watch-record',
   templateUrl: './single-watch-record.component.html',
   styleUrls: ['./single-watch-record.component.css'],
 })
 export class SingleWatchRecordComponent {
-  @Input() record: any;
+  @Input() showRecord!: Movies;
   watchListService = inject(WatchListService);
-  dataMovie!: Movies;
   apiLoaded = false;
-  videoId: string = '';
   currentVideoId: any;
 
   ngOnInit() {
@@ -24,16 +20,6 @@ export class SingleWatchRecordComponent {
       document.body.appendChild(tag);
       this.apiLoaded = true;
     }
-
-    // this.watchListService
-    //   .getMovieRecordByTitle(this.record.movie)
-    //   .subscribe((data: any) => {
-    //     this.dataMovie = data;
-    //     this.videoId = data.videoId;
-    //   });
-
-    //  this.watchListService.getMovieRecordByTitle(this.record.movie)
-    this.watchListService.fetchWatchList();
   }
 
   selectVideo(video: Movies) {
@@ -43,6 +29,5 @@ export class SingleWatchRecordComponent {
 
   remove(title: string) {
     this.watchListService.removeFromWatchList(title);
-    window.location.reload();
   }
 }

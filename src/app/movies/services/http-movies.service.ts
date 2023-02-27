@@ -1,19 +1,27 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Movies, Reperoire } from 'models';
-import { filter, map, Observable, switchMap, tap } from 'rxjs';
-import { WatchListService } from '../watch-list/watch-list.service';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpMoviesService {
+  private movies$$ = new BehaviorSubject<Movies[] | []>([]);
+
   private url = 'http://localhost:3000';
-  private watchListService = inject(WatchListService);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getMovies().subscribe((res) => {
+      this.movies$$.next(res);
+    });
+  }
 
-  getMovies(): Observable<Movies[]> {
+  get movies$() {
+    return this.movies$$.asObservable();
+  }
+
+  private getMovies() {
     return this.http.get<Movies[]>(this.url + '/movies');
   }
 
@@ -25,7 +33,6 @@ export class HttpMoviesService {
     const result = this.getRepertoire().pipe(
       map((movies) => movies.filter((movie) => movie.day === day))
     );
-    // .pipe(tap(console.log))
 
     return result;
   }
@@ -34,17 +41,7 @@ export class HttpMoviesService {
     return this.http.get(`${this.url}/movies/${title}`);
   }
 
-  getMoviesByTitle() {
-    return this.http.get(`this.localhost`);
-  }
-
   getDate(): Observable<string[]> {
     return this.http.get<string[]>(this.url + '/week');
   }
-
-  // getRepertoireByDay(day:string):Observable<Reperoire>{
-  //   return this.getRepertoire().pipe(
-  //     filter(repertoires => repertoires.day === day)
-  //   )
-  // }
 }

@@ -20,32 +20,30 @@ export class WatchListService {
   private authService = inject(AuthService);
   private url = 'http://localhost:3000/watchList';
   private moviesUrl = 'http://localhost:3000/movies';
-  existInDb = false;
   currentUser: string | null = '';
-  private watchList$$ = new BehaviorSubject<Movies[]>([]);
+  private watchList$$ = new BehaviorSubject<WatchListRecord[]>([]);
 
   constructor() {
     this.authService.auth$.subscribe((data) => (this.currentUser = data.id));
+    this.fetchWatchList().subscribe((res) => {
+      this.watchList$$.next(res);
+    });
   }
 
   fetchWatchList() {
-    return this.http.get<Movies[]>(this.url);
+    return this.http.get<WatchListRecord[]>(this.url);
   }
 
   fetchWatchListById(id: string | number) {
-    return this.http.get<Movies>(`${this.url}/${id}`);
+    return this.http.get<WatchListRecord>(`${this.url}/${id}`);
   }
 
-  getWatchList$() {
+  get watchList$() {
     return this.watchList$$.asObservable();
   }
 
   getMovieRecordByTitle$(title: string) {
     return this.http.get<Movies>(`${this.moviesUrl}/${title}`);
-  }
-
-  getAll() {
-    return this.http.get<WatchListRecord[]>(this.url);
   }
 
   addMovieToWatchList(title: string) {
@@ -83,16 +81,16 @@ export class WatchListService {
       .subscribe();
   }
 
-  getSelectedRecordId(title: string) {
-    return this.findId(title)
-      .pipe(
-        switchMap((id) => this.http.get<WatchListRecord[]>(`${this.url}/${id}`))
-      )
-      .subscribe({
-        next: (data: any) => data.id,
-        error: () => this.toast.error('Takiego recordu nie ma w bazie danych'),
-      });
-  }
+  // getSelectedRecordId(title: string) {
+  //   return this.findId(title)
+  //     .pipe(
+  //       switchMap((id) => this.http.get<WatchListRecord[]>(`${this.url}/${id}`))
+  //     )
+  //     .subscribe({
+  //       next: (data: any) => data.id,
+  //       error: () => this.toast.error('Takiego recordu nie ma w bazie danych'),
+  //     });
+  // }
 
   // checkExistenceRecordInDb(title: string) {
   //   this.getMatchingRecord(title).subscribe({

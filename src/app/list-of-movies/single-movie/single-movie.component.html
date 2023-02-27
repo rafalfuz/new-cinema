@@ -36,10 +36,17 @@
       <mat-button-toggle
         class="hourOfSeans"
         *ngFor="let hour of movie.hours"
-        [routerLink]="['/repertoire/day', hour]"
+        (click)="
+          navigateToReservation(
+            movie.day,
+            hour.time,
+            hour.roomId,
+            hour.showingId
+          )
+        "
         value="{{ hour.time }}"
-        >{{ hour.time }}</mat-button-toggle
-      >
+        >{{ hour.time }}
+      </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="movie-rating">

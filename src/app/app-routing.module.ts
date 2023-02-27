@@ -34,10 +34,6 @@ const routes: Routes = [
     component: OrderFormComponent,
   },
   {
-    path: 'today',
-    component: OrderFormComponent,
-  },
-  {
     path: 'repertoire',
     component: ListOfMoviesComponent,
   },
@@ -45,6 +41,14 @@ const routes: Routes = [
     path: 'repertoire/:day',
     component: ListOfMoviesComponent,
   },
+  {
+    path: 'reservation',
+    loadChildren: () => import('./order/order.module'),
+  },
+  // {
+  //   path: 'reservation/:day/:showingId/:cinemaRoomId/:time',
+  //   loadChildren: () => import('./order/order.module'),
+  // },
   {
     path: '**',
     component: PageNotFoundComponent,
