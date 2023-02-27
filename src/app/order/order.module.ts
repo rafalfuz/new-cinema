@@ -10,13 +10,13 @@ import { ReservationComponent } from './views/reservation/reservation.component'
         path: '',
         component: OrderComponent,
         children: [
+          // {
+          //   path: '',
+          //   redirectTo: 'reservation',
+          //   pathMatch: 'full',
+          // },
           {
-            path: '',
-            redirectTo: 'reservation',
-            pathMatch: 'full',
-          },
-          {
-            path: 'reservation',
+            path: ':id/:day/:time/:roomId',
             component: ReservationComponent,
           },
         ],

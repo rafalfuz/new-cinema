@@ -84,7 +84,7 @@ export class SingleMovieComponent {
     cinemaRoomId: string,
     showingId: string
   ) {
-    this.router.navigate(['/reservation', day, time, cinemaRoomId, showingId]);
+    this.router.navigate(['/reservation', showingId, day, time, cinemaRoomId]);
   }
 
   ngOnInit() {

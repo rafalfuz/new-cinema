@@ -107,8 +107,17 @@
 }
 .premiereInfo {
   position: absolute;
-  top: 2%;
-  right: 2%;
   color: red;
   letter-spacing: 2px;
+  font-size: 26px;
+  width: 100%;
+  font-weight: bold;
+  text-align: right;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  border: 1px solid red;
+  width: fit-content;
+  background-color: rgb(4, 28, 50);
+  border-radius: 5px;
 }

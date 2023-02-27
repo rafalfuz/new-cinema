@@ -108,6 +108,8 @@ export interface ShowingDatas {
   id: string;
   roomId: string;
   movieId: string;
+  time: string;
+  day: string;
   takenSeats: TakenSeat[];
   room: {
     id: string;

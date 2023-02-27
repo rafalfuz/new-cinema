@@ -45,10 +45,10 @@ const routes: Routes = [
     path: 'reservation',
     loadChildren: () => import('./order/order.module'),
   },
-  {
-    path: 'reservation/:day/:showingId/:cinemaRoomId/:time',
-    loadChildren: () => import('./order/order.module'),
-  },
+  // {
+  //   path: 'reservation/:day/:showingId/:cinemaRoomId/:time',
+  //   loadChildren: () => import('./order/order.module'),
+  // },
   {
     path: '**',
     component: PageNotFoundComponent,

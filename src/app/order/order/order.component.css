@@ -3,5 +3,5 @@
   margin: 30px auto;
   border: 1px solid white;
   padding: 20px;
-  height: 80vh;
+  min-height: 80vh;
 }

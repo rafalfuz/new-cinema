@@ -19,33 +19,7 @@
       "columns": 8
     }
   ],
-  "watchList": [
-    {
-      "id": 1677365882231,
-      "idUser": "izakrzan@onlyfans.com",
-      "movie": "top-gun-maverick"
-    },
-    {
-      "id": 1677365887687,
-      "idUser": "izakrzan@onlyfans.com",
-      "movie": "arcane - league of legends"
-    },
-    {
-      "id": 1677506782712,
-      "idUser": "rafalfuz@gmail.com",
-      "movie": "top-gun-maverick"
-    },
-    {
-      "id": 1677507856740,
-      "idUser": "izakrzan@onlyfans.com",
-      "movie": "avengers-endgame"
-    },
-    {
-      "id": 1677507858084,
-      "idUser": "izakrzan@onlyfans.com",
-      "movie": "spider-man-into-the-spider-verse"
-    }
-  ],
+  "watchList": [],
   "user": [
     {
       "id": "admin@alekino.com",
@@ -80,11 +54,7 @@
   ],
   "repertoire": {
     "movieId": "movie-7493-11ed-89ed-499bb1f405dc",
-    "hours": [
-      "13:00",
-      "15:00",
-      "18:00"
-    ],
+    "hours": ["13:00", "15:00", "18:00"],
     "day": "06-12-2022"
   },
   "ticketInfo": [
@@ -436,6 +406,8 @@
       "id": "06-12-22-15-00-niagara-avengers-endgame",
       "roomId": "sala1",
       "movieId": "avengers-endgame",
+      "time": "15:00",
+      "day": "06-12-2022",
       "takenSeats": [
         {
           "position": {
@@ -464,6 +436,8 @@
       "id": "06-12-22-17-00-niagara-avengers-endgame",
       "roomId": "sala1",
       "movieId": "avengers-endgame",
+      "time": "17:00",
+      "day": "06-12-2022",
       "takenSeats": [
         {
           "position": {
