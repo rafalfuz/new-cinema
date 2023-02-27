@@ -16,7 +16,7 @@ import { ReservationComponent } from './views/reservation/reservation.component'
             pathMatch: 'full',
           },
           {
-            path: ':id',
+            path: 'reservation',
             component: ReservationComponent,
           },
         ],

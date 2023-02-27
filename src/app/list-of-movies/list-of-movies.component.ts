@@ -18,7 +18,6 @@ export class ListOfMoviesComponent {
   movies: Observable<Reperoire[]> = this.route.paramMap.pipe(
     switchMap((params) => {
       const day = params.get('day');
-      console.log(params);
       return day
         ? this.http.getMoviesByDay(day)
         : this.http.getMoviesByDay('06-12-2022');
