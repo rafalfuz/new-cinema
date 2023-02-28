@@ -90,11 +90,6 @@ export interface Showing {
   takenSeats: TakenSeat[];
 }
 
-// export interface Cinemarooms {
-//     id: string;
-//     seats: any[][];
-// }
-
 export interface Cinemarooms {
   id: string;
   seats: {

@@ -5,8 +5,8 @@ import { LoginFormComponent } from './core/auth/login-form/login-form.component'
 import { OrderFormComponent } from './movies/order-form/order-form.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AdminViewComponent } from './core/admin-view/admin-view.component';
-import { adminAuthGuard } from './core/auth/admin-auth.guard';
 import { WatchListComponent } from './movies/watch-list/watch-list.component';
+import { AdminGuard } from './core/auth/admin-auth.guards';
 
 const routes: Routes = [
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminViewComponent,
-    canActivate: [adminAuthGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'form',
@@ -45,10 +45,6 @@ const routes: Routes = [
     path: 'reservation',
     loadChildren: () => import('./order/order.module'),
   },
-  // {
-  //   path: 'reservation/:day/:showingId/:cinemaRoomId/:time',
-  //   loadChildren: () => import('./order/order.module'),
-  // },
   {
     path: '**',
     component: PageNotFoundComponent,

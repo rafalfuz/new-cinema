@@ -11,7 +11,7 @@ export class SingleWatchRecordComponent {
   @Input() showRecord!: Movies;
   watchListService = inject(WatchListService);
   apiLoaded = false;
-  currentVideoId: any;
+  currentVideoId!: string | null;
 
   ngOnInit() {
     if (!this.apiLoaded) {

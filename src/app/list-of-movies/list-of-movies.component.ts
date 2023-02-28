@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Reperoire } from 'models';
-import { Observable, switchMap } from 'rxjs';
+import { EMPTY, Observable, switchMap } from 'rxjs';
 import { HttpMoviesService } from '../movies/services/http-movies.service';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -15,20 +15,23 @@ export class ListOfMoviesComponent {
   color: ThemePalette = 'primary';
   mode: ProgressSpinnerMode = 'determinate';
   value = 50;
-  movies: Observable<Reperoire[]> = this.route.paramMap.pipe(
+
+  private repertuare = inject(HttpMoviesService);
+  private actRoute = inject(ActivatedRoute);
+  private route = inject(Router);
+  today = inject(HttpMoviesService).getToday();
+  movies: Observable<Reperoire[]> = this.actRoute.paramMap.pipe(
     switchMap((params) => {
       const day = params.get('day');
+
       return day
-        ? this.http.getMoviesByDay(day)
-        : this.http.getMoviesByDay('06-12-2022');
+        ? this.repertuare.getMoviesByDay(day)
+        : // : EMPTY
+          this.repertuare.getMoviesByStart();
     })
   );
 
-  constructor(private http: HttpMoviesService, private route: ActivatedRoute) {}
-
-  // ngOnInit() {
-  //   this.movies = this.route.paramMap.pipe(
-  //     switchMap((params) => this.http.getMoviesByDay(params.get('day'))),
-  //   );
-  // }
+  ngOnInit() {
+    this.route.navigate([`repertoire/${this.today}`]);
+  }
 }

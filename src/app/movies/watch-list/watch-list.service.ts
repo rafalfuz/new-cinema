@@ -25,13 +25,13 @@ export class WatchListService {
 
   constructor() {
     this.authService.auth$.subscribe((data) => (this.currentUser = data.id));
-    this.fetchWatchList().subscribe((res) => {
-      this.watchList$$.next(res);
-    });
+    this.fetchWatchList();
   }
 
   fetchWatchList() {
-    return this.http.get<WatchListRecord[]>(this.url);
+    return this.http
+      .get<WatchListRecord[]>(this.url)
+      .subscribe((res) => this.watchList$$.next(res));
   }
 
   fetchWatchListById(id: string | number) {
@@ -54,7 +54,9 @@ export class WatchListService {
         idUser: user,
         movie: title,
       })
-      .subscribe();
+      .subscribe(() => {
+        return this.fetchWatchList();
+      });
   }
 
   getRecordsByUsersName() {
@@ -64,7 +66,7 @@ export class WatchListService {
       })
     );
   }
-
+  //(val) => this.watchList$$.next(val)
   getMatchingRecord(title: string) {
     const user = this.currentUser;
     const url = `${this.url}?idUser=${user}&movie=${title}`;
@@ -78,29 +80,6 @@ export class WatchListService {
   removeFromWatchList(title: string) {
     this.findId(title)
       .pipe(switchMap((id) => this.http.delete(`${this.url}/${id}`)))
-      .subscribe();
+      .subscribe(() => this.fetchWatchList());
   }
-
-  // getSelectedRecordId(title: string) {
-  //   return this.findId(title)
-  //     .pipe(
-  //       switchMap((id) => this.http.get<WatchListRecord[]>(`${this.url}/${id}`))
-  //     )
-  //     .subscribe({
-  //       next: (data: any) => data.id,
-  //       error: () => this.toast.error('Takiego recordu nie ma w bazie danych'),
-  //     });
-  // }
-
-  // checkExistenceRecordInDb(title: string) {
-  //   this.getMatchingRecord(title).subscribe({
-  //     next: (data: any) => {
-  //       if(data.lenght !== 0){
-
-  //       }
-  //     },
-  //     error: () =>
-  //       this.toast.error('Bład przy sprawdzaniu bazy danych watchList'),
-  //   });
-  // }
 }

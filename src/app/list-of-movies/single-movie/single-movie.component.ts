@@ -21,8 +21,8 @@ export class SingleMovieComponent {
   watchListService = inject(WatchListService);
   toast = inject(ToastrService);
   isFullyBlown = false;
-  declaredToWatchList?: boolean;
-  currentUser!: any;
+  declaredToWatchList!: boolean;
+  currentUser!: string | null;
   @Input() movie!: Reperoire;
 
   handleVisibiltyDescription() {
@@ -67,16 +67,16 @@ export class SingleMovieComponent {
   }
 
   checkDeclaredToWatchStatus() {
-    // const movieTitle = this.movie.movie.id;
-    // this.watchListService.watchList$.subscribe((data) => {
-    //   data.map((data) => {
-    //     if (data.movie === movieTitle && data.idUser === this.currentUser) {
-    //       this.declaredToWatchList = true;
-    //     } else {
-    //       this.declaredToWatchList = false;
-    //     }
-    //   });
-    // });
+    const movieTitle = this.movie.movie.id;
+    this.watchListService.watchList$.subscribe((data) => {
+      data.map((data) => {
+        if (data.movie === movieTitle && data.idUser === this.currentUser) {
+          this.declaredToWatchList = this.declaredToWatchList;
+        } else {
+          this.declaredToWatchList = false;
+        }
+      });
+    });
   }
   navigateToReservation(
     day: string,

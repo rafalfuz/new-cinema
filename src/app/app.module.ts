@@ -22,7 +22,6 @@ import { WatchListComponent } from './movies/watch-list/watch-list.component';
 import { SingleWatchRecordComponent } from './movies/watch-list/single-watch-record/single-watch-record.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { DialogRateComponent } from './list-of-movies/single-movie/dialog-rate/dialog-rate.component';
-// import { StarRatingComponent } from './list-of-movies/single-movie/dialog-rate/star-rating/star-rating.component';
 
 function initFactory(initService: AuthService) {
   return () => initService.autoLogin();
@@ -44,7 +43,6 @@ function initFactory(initService: AuthService) {
     WatchListComponent,
     SingleWatchRecordComponent,
     DialogRateComponent,
-    // StarRatingComponent,
   ],
   imports: [
     BrowserModule,

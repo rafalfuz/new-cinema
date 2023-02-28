@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpMoviesService } from 'src/app/movies/services/http-movies.service';
 
@@ -8,29 +9,17 @@ import { HttpMoviesService } from 'src/app/movies/services/http-movies.service';
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent {
-  // week: Observable<string[]>
   week!: string[];
-  currentDay = '06-12-2022';
-  constructor(public http: HttpMoviesService) {
-    // this.week = this.http.getDate()
-    // this.week = ["06-12-2022", "07-12-2022", "08-12-2022", "09-12-2022", "10-12-2022", "11-12-2022", "12-12-2022"]
-    this.week = [
-      '06-12-2022',
-      '07-12-2022',
-      '08-12-2022',
-      '09-12-2022',
-      '10-12-2022',
-      '11-12-2022',
-      '12-12-2022',
-    ];
-  }
-  ngOnInit() {}
+  currentDay!: string;
+  weekArr = inject(HttpMoviesService);
+  route = inject(Router);
 
-  // today = Date.now();
-  // tomorrow = new Date((new Date()).getTime() + (1 * 86400000))
-  // todayAddTwoDays = new Date((new Date()).getTime() + (2 * 86400000))
-  // todayAddThreeDays = new Date((new Date()).getTime() + (3 * 86400000))
-  // todayAddFourDays= new Date((new Date()).getTime() + (4 * 86400000))
-  // todayAddFiveDays = new Date((new Date()).getTime() + (5 * 86400000))
-  // todayAddSixDays = new Date((new Date()).getTime() + (6 * 86400000))
+  ngOnInit() {
+    const subscription = this.weekArr.week$.subscribe((data) => {
+      this.week = data;
+      this.currentDay = data[0];
+    });
+
+    subscription.unsubscribe();
+  }
 }

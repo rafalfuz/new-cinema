@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  min-height: 450px;
 }
 
 .movie-image-wrapper {
@@ -10,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.6);
+  transform: scale(0.7);
 }
 
 .movie-image-poster {
@@ -54,20 +55,26 @@
 
 .movie-info {
   flex-basis: 50%;
-  padding: 5%;
+  padding: 2.5%;
   font-size: 1.6rem;
   text-align: left;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: translateY(-50px);
 }
 
 .movie-info-about {
   font-size: 1.6rem;
-  margin: 1rem auto;
+
+  padding: 30px 0;
 }
 
 .movie-info-description {
   line-height: 2;
+  min-height: 100px;
+  display: flex;
+  justify-content: left;
 }
 
 .movie-info-description-show {
@@ -75,6 +82,7 @@
   text-align: right;
   cursor: pointer;
   text-decoration: underline;
+  transform: translateY(-50px);
 }
 
 .movie-rating {
@@ -95,6 +103,7 @@
 
 .hoursOfSeans {
   width: 75%;
+  transform: translateY(-50px);
 }
 
 .hourOfSeans {

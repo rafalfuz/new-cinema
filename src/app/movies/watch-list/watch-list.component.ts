@@ -13,7 +13,10 @@ import { WatchListService } from './watch-list.service';
 export class WatchListComponent {
   watchListService = inject(WatchListService);
   httpMovieService = inject(HttpMoviesService);
-  list$ = this.watchListService.getRecordsByUsersName();
+
+  list$ = this.watchListService.watchList$;
+  //  this.watchListService.watchList$;
+  // this.watchListService.getRecordsByUsersName();
   showList!: Observable<Movies[]>;
 
   ngOnInit() {

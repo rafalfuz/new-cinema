@@ -11,11 +11,8 @@ export type LoginCredentials = { email: string; password: string };
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {
-    // this.setStateFromLocalStorage();
-    // this.onHasAuthChange();
-    // this.logoutCallBetterLaterThisFn();
-  }
+  constructor() {}
+
   private toast = inject(ToastrService);
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -25,7 +22,7 @@ export class AuthService {
     name: '',
     email: '',
     password: '',
-    role: 'none',
+    role: '',
   });
   private confirm$$ = new BehaviorSubject<{ hasAuth: boolean }>({
     hasAuth: false,
@@ -58,27 +55,6 @@ export class AuthService {
   getByCode(code: any) {
     return this.http.get(this.apiurl + '/' + code);
   }
-
-  // login(credentials: { email: string; password: string }) {
-  //   return this.http
-  //     .post<AuthResponse>('http://localhost:3000/log', {
-  //       email: credentials.email,
-  //       password: credentials.password,
-  //     })
-  //     .pipe(
-  //       tap({
-  //         next: (res) => {
-  //           localStorage.setItem('token', res.token);
-  //           this.confirm$$.next({ hasAuth: true });
-  //           this.router.navigate(['']);
-  //           alert('Zostałes zalogowany');
-  //         },
-  //         error: () => {
-  //           alert('error');
-  //         },
-  //       })
-  //     );
-  // }
 
   log(user: User) {
     this.confirm$$.next({ hasAuth: true });
@@ -113,36 +89,12 @@ export class AuthService {
     this.router.navigate(['/']);
     this.toast.success('Zostałes poprawnie wylogowany');
   }
-  // private router = inject(Router);
 
   handleNoAuthState() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/noAccess']);
   }
 
-  private logoutCallBetterLaterThisFn() {
-    this.router.events
-      .pipe(
-        filter(
-          (event) =>
-            event instanceof NavigationEnd && event.url === '/repertoire'
-        )
-      )
-      .subscribe(() => {
-        this.logout();
-      });
-  }
-
-  private onHasAuthChange() {
-    this.confirm$$.pipe(skip(1)).subscribe((authState) => {
-      if (!authState.hasAuth) {
-        this.handleNoAuthState();
-      }
-    });
-  }
-
-  private setStateFromLocalStorage() {
-    if (localStorage.getItem('token')) {
-      this.confirm$$.next({ hasAuth: true });
-    }
+  getConfirm(): { hasAuth: boolean } {
+    return this.confirm$$.getValue();
   }
 }
