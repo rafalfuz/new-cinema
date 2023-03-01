@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService, LoginCredentials } from '../auth.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,23 +11,23 @@ import { AuthService, LoginCredentials } from '../auth.service';
 export class LoginFormComponent {
   private authService = inject(AuthService);
   private builder = inject(NonNullableFormBuilder);
-  private router = inject(Router);
   form = this.createForm();
-  private confirmation = inject(AuthService);
   userdata: any;
   private toast = inject(ToastrService);
 
   private createForm() {
     return this.builder.group({
       email: this.builder.control('', {
-        validators: [Validators.required, Validators.email],
+        validators: [
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
       }),
       password: this.builder.control('', {
         validators: [
           Validators.required,
-          // Validators.pattern(
-          //   '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-          // ),
+          Validators.minLength(4),
+          Validators.maxLength(25),
         ],
       }),
     });
@@ -53,6 +51,12 @@ export class LoginFormComponent {
     }
     return this.emailCtrl.hasError('email') ? 'Nieprawidłowy adres email' : '';
   }
+
+  // getPasswordError() {
+  //   if (this.passwordCtrl.hasError('required')) {
+  //     return 'Podaj haslo';
+  //   }
+  // }
 
   proceedLogin() {
     if (this.form.valid) {

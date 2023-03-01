@@ -4,7 +4,7 @@ import { ListOfMoviesComponent } from './list-of-movies/list-of-movies.component
 import { LoginFormComponent } from './core/auth/login-form/login-form.component';
 import { OrderFormComponent } from './movies/order-form/order-form.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { AdminViewComponent } from './core/admin-view/admin-view.component';
+import { AdminViewComponent } from './admin/admin-view.component';
 import { WatchListComponent } from './movies/watch-list/watch-list.component';
 import { AdminGuard } from './core/auth/admin-auth.guards';
 

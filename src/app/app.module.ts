@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { FootbarComponent } from './shared/components/footbar/footbar.component';
-import { AdminViewComponent } from './core/admin-view/admin-view.component';
+import { AdminViewComponent } from './admin/admin-view.component';
 import { MaterialModule } from 'src/material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthService } from './core/auth/auth.service';
