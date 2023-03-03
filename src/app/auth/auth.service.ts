@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, filter, map, Observable, skip, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, map, MonoTypeOperatorFunction } from 'rxjs';
 import { User } from 'models';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,8 +11,6 @@ export type LoginCredentials = { email: string; password: string };
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
-
   private toast = inject(ToastrService);
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -28,35 +26,27 @@ export class AuthService {
     hasAuth: false,
   });
 
-  get confirm$() {
-    return this.confirm$$.asObservable();
-  }
-
   get auth$() {
     return this.user$$.asObservable();
   }
 
-  get userId() {
-    return this.user$$.subscribe((data) => data.id);
+  get confirm$() {
+    return this.confirm$$.asObservable();
   }
 
   get selectUserId$() {
     return this.user$$.pipe(map((user) => user.id));
   }
 
-  get authValue() {
-    return this.confirm$$.value;
+  getUserDataById(id: string) {
+    return this.http.get(this.apiurl + '/' + id);
   }
 
-  getAll() {
-    return this.http.get(this.apiurl);
+  getConfirm(): { hasAuth: boolean } {
+    return this.confirm$$.getValue();
   }
 
-  getByCode(code: any) {
-    return this.http.get(this.apiurl + '/' + code);
-  }
-
-  log(user: User) {
+  login(user: User) {
     this.confirm$$.next({ hasAuth: true });
     this.user$$.next(user);
     this.router.navigate(['']);
@@ -92,9 +82,5 @@ export class AuthService {
 
   handleNoAuthState() {
     this.router.navigate(['/noAccess']);
-  }
-
-  getConfirm(): { hasAuth: boolean } {
-    return this.confirm$$.getValue();
   }
 }

@@ -11,9 +11,10 @@ import { AuthService } from '../auth.service';
 export class LoginFormComponent {
   private authService = inject(AuthService);
   private builder = inject(NonNullableFormBuilder);
-  form = this.createForm();
-  userdata: any;
   private toast = inject(ToastrService);
+
+  form = this.createForm();
+  userdata: any; // this.authService.userdata$;
 
   private createForm() {
     return this.builder.group({
@@ -52,26 +53,29 @@ export class LoginFormComponent {
     return this.emailCtrl.hasError('email') ? 'Nieprawidłowy adres email' : '';
   }
 
-  // getPasswordError() {
-  //   if (this.passwordCtrl.hasError('required')) {
-  //     return 'Podaj haslo';
-  //   }
-  // }
+  // value -
 
   proceedLogin() {
-    if (this.form.valid) {
-      this.authService.getByCode(this.form.value.email).subscribe((res) => {
+    console.log(this.form.getRawValue().email);
+    if (this.form.invalid) {
+      return;
+    }
+
+    // if (this.form.valid) {
+    this.authService
+      .getUserDataById(this.form.getRawValue().email)
+      .subscribe((res) => {
         this.userdata = res;
         if (this.userdata.password === this.form.value.password) {
           localStorage.setItem('userId', this.userdata.id);
           localStorage.setItem('userName', this.userdata.name);
           localStorage.setItem('userRole', this.userdata.role);
-          this.authService.log(this.userdata);
+          this.authService.login(this.userdata);
           this.toast.success(`Zostałes zalogowany jako ${this.userdata.name}`);
         } else {
           this.toast.error('Błędne hasło. Spróbuj ponowanie');
         }
       });
-    }
+    // }
   }
 }

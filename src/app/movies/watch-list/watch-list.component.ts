@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Movies } from 'models';
 import { combineLatest, map, Observable, of, switchMap } from 'rxjs';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
-import { HttpMoviesService } from '../services/http-movies.service';
+import { MoviesService } from '../movies.service';
 import { WatchListService } from './watch-list.service';
 
 @Component({
@@ -13,23 +13,20 @@ import { WatchListService } from './watch-list.service';
 })
 export class WatchListComponent {
   watchListService = inject(WatchListService);
-  httpMovieService = inject(HttpMoviesService);
+  movieService = inject(MoviesService);
   authService = inject(AuthService);
 
   listOfAllMoviesInDB$ = this.watchListService.watchList$;
   currentUser$ = this.authService.auth$;
-  showList!: Observable<Movies[]>;
+  showList = this.getShowList();
 
-  ngOnInit() {
-    this.showList = combineLatest([
-      this.httpMovieService.movies$,
+  private getShowList() {
+    return combineLatest([
+      this.movieService.moviesBank$,
       this.listOfAllMoviesInDB$,
       this.currentUser$,
     ]).pipe(
-      switchMap(([listOfAllMoviesInDB, moviesInState, currentUser]) => {
-        return of({ listOfAllMoviesInDB, moviesInState, currentUser });
-      }),
-      map(({ moviesInState, listOfAllMoviesInDB, currentUser }) => {
+      map(([listOfAllMoviesInDB, moviesInState, currentUser]) => {
         const matchingRecordsInMoviesInStateToUsers = moviesInState.filter(
           (movieInState) => movieInState.idUser === currentUser.id
         );
@@ -43,25 +40,3 @@ export class WatchListComponent {
     );
   }
 }
-
-// ngOnInit() {
-//   this.showList = combineLatest([
-//     this.httpMovieService.movies$,
-//     this.listOfAllMoviesInDB$,
-//     this.currentUser$
-//   ]).pipe(
-//     switchMap(([moviesInState, listOfAllMoviesInDB, currentUser]) => {
-//       return of({ moviesInState, listOfAllMoviesInDB, currentUser });
-//     }),
-//     map(({ moviesInState, listOfAllMoviesInDB, currentUser }) => {
-//       const movieTitlesFromList = listOfAllMoviesInDB.map(
-//         (result) => result.movie
-//       );
-
-//       return moviesInState.filter((movieInState) =>
-//         movieTitlesFromList.includes(movieInState.id)
-//       );
-//     })
-//   );
-// }
-// }

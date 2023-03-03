@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Movies } from 'models';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, map, Observable, switchMap, tap } from 'rxjs';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 export interface WatchListRecord {
   id: number;
@@ -66,7 +66,7 @@ export class WatchListService {
       })
     );
   }
-  //(val) => this.watchList$$.next(val)
+
   getMatchingRecord(title: string) {
     const user = this.currentUser;
     const url = `${this.url}?idUser=${user}&movie=${title}`;

@@ -1,12 +1,11 @@
 <div class="top-bar">
-  <p class="top-bar--title" [routerLink]="'/'">KINO</p>
+  <p class="top-bar--title" (click)="reloadHomeView()" [routerLink]="'/'">
+    KINO
+  </p>
 
   <div class="top-bar--login-panel" *ngIf="(user | async)! as user">
     <button mat-raised-button>🛒</button>
     <ng-container *ngIf="(authValue | async)!.hasAuth; else offline">
-      <!-- <button mat-raised-button [routerLink]="'/login'">
-        Witaj {{ user.name }}
-      </button> -->
       <button mat-raised-button [matMenuTriggerFor]="menu">
         Witaj {{ user.name }}
       </button>

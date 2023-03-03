@@ -1,13 +1,12 @@
 import { Component, inject, Input } from '@angular/core';
-import { Movies, Reperoire } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { filter, map, Observable, of, switchMap, tap } from 'rxjs';
-import { AuthService } from 'src/app/core/auth/auth.service';
+import { tap } from 'rxjs';
 import { WatchListService } from 'src/app/movies/watch-list/watch-list.service';
-import { TruncatePipe } from '../../pipes/truncate.pipe';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogRateComponent } from './dialog-rate/dialog-rate.component';
+import { DialogRateComponent } from '../dialog/dialog-rate.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Movie, Movies, Reperoire } from 'models';
 
 @Component({
   selector: 'app-single-movie',
@@ -15,15 +14,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./single-movie.component.css'],
 })
 export class SingleMovieComponent {
+  @Input() movie!: Reperoire;
+
   dialog = inject(MatDialog);
   router = inject(Router);
   user = inject(AuthService).auth$;
   watchListService = inject(WatchListService);
   toast = inject(ToastrService);
+
   isFullyBlown = false;
   declaredToWatchList!: boolean;
   currentUser!: string | null;
-  @Input() movie!: Reperoire;
 
   handleVisibiltyDescription() {
     this.isFullyBlown = !this.isFullyBlown;
@@ -88,15 +89,13 @@ export class SingleMovieComponent {
   }
 
   ngOnInit() {
-    this.user
-      .pipe(
-        tap({
-          next: (data) => {
-            this.currentUser = data.id;
-          },
-        })
-      )
-      .subscribe();
+    this.user.pipe(
+      tap({
+        next: (data) => {
+          this.currentUser = data.id;
+        },
+      })
+    );
 
     // this.checkDeclaredToWatchStatus();
   }
